@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  align-items: center;
+}
+
+#overseas,
+#domestic {
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #4d0059;
+  color: white;
+  font-size: 15px;
+  height: 45px;
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+}
+
+#overseas:hover,
+#domestic:hover {
+  background-color: #690079;
+}
+
+.title {
+  font-size: 50px;
+}
+
+.div {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 2rem;
+}
