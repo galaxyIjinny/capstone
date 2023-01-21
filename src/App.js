@@ -9,6 +9,7 @@ import Step from "./components/step/Step";
 import Price from "./components/price/Price";
 import QnA from "./components/qna/QnA.js";
 import Footer from "./components/footer/Footer";
+import Introduce from "./components/introduce/introduce";
 import "./App.css";
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/step" element={<Step />} />
         <Route path="/price" element={<Price />} />
+        <Route path="/introduce" element={<Introduce />} />
         <Route path="/qna" element={<QnA />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
