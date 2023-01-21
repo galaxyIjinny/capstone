@@ -15,7 +15,6 @@ const App = () => {
   return (
     <div className="App">
       <Nav />
-      <Footer />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/domesticmark" element={<DomesticMark />} />
@@ -27,6 +26,7 @@ const App = () => {
         <Route path="/qna" element={<QnA />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
+      <Footer />
     </div>
   );
 };
