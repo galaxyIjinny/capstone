@@ -13,6 +13,7 @@ a {
 }
 
 .navbar_logo {
+  margin-right: 1rem;
   font-family: "Changa One", cursive;
   font-weight: 900;
   font-size: 38px;
@@ -23,6 +24,7 @@ a {
 }
 
 .navbar_menu {
+  margin-right: auto;
   display: flex;
   align-items: left;
   list-style: none;
