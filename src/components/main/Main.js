@@ -11,13 +11,17 @@ const Main = () => {
         <Link to="/domesticmark">
           <button id="domestic">
             국내상표등록
-            <HiArrowRight style={{ fontSize: "1.3rem" }} />
+            <span className="icon">
+              <HiArrowRight />
+            </span>
           </button>
         </Link>
         <Link to="overseasmark">
           <button id="overseas">
             해외상표등록
-            <HiArrowRight style={{ fontSize: "1.3rem" }} />
+            <span className="icon">
+              <HiArrowRight />
+            </span>
           </button>
         </Link>
       </div>
