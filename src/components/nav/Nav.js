@@ -24,8 +24,12 @@ const Nav = () => {
           <Link to="step">절차안내</Link>
         </li>
         <li>
+          <Link to="introduce">회사소개</Link>
+        </li>
+        <li>
           <Link to="qna">Q&A</Link>
         </li>
+        
       </ul>
       <ul className="navbar_search">
         <li>
