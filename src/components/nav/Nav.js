@@ -29,16 +29,15 @@ const Nav = () => {
         <li>
           <Link to="qna">Q&A</Link>
         </li>
-        
       </ul>
       <ul className="navbar_search">
         <li>
-          <input type="text" placeholder="검색할 상표를 입력해주세요" />
+          <input type="text" placeholder="검색할 상표를 입력해주세요&nbsp;" />
         </li>
         <li>
-          <button>
-            <FiSearch style={{ fontSize: "1.3rem" }} />
-          </button>
+          <Link to="/search">
+            <FiSearch style={{ fontSize: "1.2rem" }} />
+          </Link>
         </li>
       </ul>
     </div>
