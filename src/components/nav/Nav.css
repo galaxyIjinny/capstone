@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Changa+One&display=swap");
 .navbar {
-  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px 20px;
-  margin: 0 50px;
+  margin: 0 100px;
 }
 
 a {
@@ -15,7 +14,7 @@ a {
 
 .navbar_logo {
   font-family: "Changa One", cursive;
-  font-weight: 900;
+  font-weight: 300;
   font-size: 38px;
 }
 
@@ -32,9 +31,12 @@ a {
 }
 
 .navbar_menu li {
-  padding: 8px 12px;
+  padding: 8px 20px;
 }
-
+.navbar_menu a:hover {
+  color: #4d0059;
+  font-weight: bold;
+}
 .navbar_search {
   list-style: none;
   display: flex;
@@ -55,7 +57,13 @@ button {
   background-color: white;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1350px) {
+  .navbar {
+    margin: 0 50px;
+  }
+}
+
+@media screen and (max-width: 1270px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
