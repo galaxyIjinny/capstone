@@ -5,13 +5,13 @@ import "./Main.css";
 const Main = () => {
   return (
     <div className="main">
-      <WorkTime width={1000} height={850} />
+      <WorkTime width="1000" height="850" />
       <div className="container">
         <div className="title">든든하고 합리적인 상표등록</div>
         <Link to="/domesticmark">
           <button id="domestic">
             국내상표등록
-            <span className="icon">
+            <span className="arrow">
               <HiArrowRight />
             </span>
           </button>
@@ -19,7 +19,7 @@ const Main = () => {
         <Link to="overseasmark">
           <button id="overseas">
             해외상표등록
-            <span className="icon">
+            <span className="arrow">
               <HiArrowRight />
             </span>
           </button>

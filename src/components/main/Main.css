@@ -10,9 +10,9 @@
   background-color: #4d0059;
   color: white;
   font-size: 15px;
-  height: 45px;
+  height: 40px;
   width: 170px;
-  margin: 10px;
+  margin: 25px 20px 10px 2px;
   text-align: center;
 }
 
@@ -22,16 +22,14 @@
 }
 
 .title {
-  font-size: 50px;
+  font-size: 3rem;
 }
 
 .container {
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-left: 2rem;
+  flex: 10;
 }
 
-.icon {
+.arrow {
   padding-left: 20%;
 }
