@@ -31,7 +31,7 @@ public class PersonalApplicationDto {
     private String approval;
 
 
-    public static PersonalApplicationDto personalApplicationDto(PersonalApplication personalApplication) {
+    public static PersonalApplicationDto createPersonalApplicationDto(PersonalApplication personalApplication) {
         return new PersonalApplicationDto(
                 personalApplication.getId(),
                 personalApplication.getProduct_type(),

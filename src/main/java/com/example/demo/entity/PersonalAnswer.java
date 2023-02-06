@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,14 +18,18 @@ public class PersonalAnswer {
     @Column
     private String document;
     @Column
+    @NotNull
     private String title;
     @Column
+    @NotNull
     private String answer;
     @OneToOne
     @JoinColumn(name = "application_id")
     private PersonalApplication personalApplication;
     @Column
+    @NotNull
     private String created_at;
     @Column
+    @NotNull
     private String updated_at;
 }
