@@ -10,7 +10,12 @@ import Price from "./components/price/Price";
 import QnA from "./components/qna/QnA.js";
 import Footer from "./components/footer/Footer";
 import Introduce from "./components/introduce/introduce";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import "./App.css";
+
 const App = () => {
   return (
     <div className="App">
