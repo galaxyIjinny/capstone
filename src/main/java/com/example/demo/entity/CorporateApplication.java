@@ -1,12 +1,17 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @Entity
 public class CorporateApplication {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column

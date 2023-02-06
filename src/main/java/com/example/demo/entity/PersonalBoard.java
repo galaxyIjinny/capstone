@@ -9,13 +9,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Review {
+public class PersonalBoard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "application_id")
+    private PersonalApplication personalApplication; // 외래키 이름 통일 필요
     @Column
-    private String name;
+    private String document;
     @Column
     private String title;
     @Column

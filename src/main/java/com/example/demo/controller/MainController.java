@@ -1,17 +1,17 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.PersonalForm;
+import com.example.demo.dto.PersonalApplicationDto;
 import com.example.demo.entity.PersonalApplication;
-import com.example.demo.repository.PersonalRepository;
+import com.example.demo.service.PersonalApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class MainController {
     @Autowired
-    private PersonalRepository personalRepository;
+    private PersonalApplicationService personalApplicationService;
 
     @GetMapping("/main")
     public String markMain() {
@@ -23,7 +23,7 @@ public class MainController {
         return "/main/markApplication";
     }
     @PostMapping("main/markApplicatioin/personal")
-    public String personalApplication(PersonalForm personalForm) {
+    public String personalApplication(PersonalApplicationDto personalForm) {
         PersonalApplication personalApplication = personalForm.toEntity();
 
         PersonalApplication saved = personalRepository.save(personalApplication);

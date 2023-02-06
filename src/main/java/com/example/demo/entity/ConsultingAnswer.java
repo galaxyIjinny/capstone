@@ -1,13 +1,18 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @Entity
 public class ConsultingAnswer {
     @Id
-    private Long consulting_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column
     private String document;
@@ -15,6 +20,9 @@ public class ConsultingAnswer {
     private String title;
     @Column
     private String answer;
+    @OneToOne
+    @JoinColumn(name = "consulting_id")
+    private Consulting consulting;
     @Column
     private String created_at;
     @Column

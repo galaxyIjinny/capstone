@@ -1,11 +1,18 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Entity
 public class PersonalAnswer {
     @Id
-    private Long application_id; // 답변번호 대신 접수번호로 하면?
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // 답변번호 대신 접수번호로 하면?
 
     @Column
     private String document;
@@ -13,6 +20,9 @@ public class PersonalAnswer {
     private String title;
     @Column
     private String answer;
+    @OneToOne
+    @JoinColumn(name = "application_id")
+    private PersonalApplication personalApplication;
     @Column
     private String created_at;
     @Column
