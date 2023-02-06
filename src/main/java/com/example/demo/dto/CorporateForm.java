@@ -43,4 +43,8 @@ public class CorporateForm {
         this.created_at = created_at;
         this.approval = approval;
     }
+
+    public CorporateForm toEntity() {
+        return new CorporateForm(id, product_type, email, crn, brn, name_kor, name_eng, phone, brandname, type, description, category, classification, password, domestic_status, foreign_status, answer_status, created_at, approval);
+    }
 }
