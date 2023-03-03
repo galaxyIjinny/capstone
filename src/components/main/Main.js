@@ -1,11 +1,13 @@
-import { ReactComponent as WorkTime } from "../../assets/images/WorkTime.svg";
+import { ReactComponent as mainImages } from "../../assets/images/메인.jpeg";
+import mainBackground from "../../assets/images/메인.jpeg";
 import { HiArrowRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import "./Main.css";
 const Main = () => {
   return (
-    <div className="main">
-      <WorkTime width="1000" height="850" />
+    <div className="main" style={{backgroundImage: `url(${mainBackground})`,
+    backgroundRepeat: 'no-repeat',
+    width:'1920px', height: "1080px" }}>
       <div className="container">
         <div className="title">든든하고 합리적인 상표등록</div>
         <Link to="/domesticmark">
