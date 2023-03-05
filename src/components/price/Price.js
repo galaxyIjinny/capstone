@@ -1,34 +1,30 @@
 import Grid from '@mui/material/Grid';
 import { Container, fontSize } from '@mui/system';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { Avatar } from '@mui/material';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
 import { useState } from 'react';
-import { CheckBox, Padding } from '@mui/icons-material';
 import './Price.css';
 import { ReactComponent as CheckIcon } from "../../assets/images/icon/iconCheck.svg";
-
+import priceBackground from "../../assets/images/비용안내.jpeg";
 
 function Price() {
-  let [title] = useState(["국내출원", "해외출원", "국내+해외출원"]);
+  let [title] = useState(["국내출원 상표등록", "해외출원 상표등록", "국내+해외출원 상표등록"]);
   return (
     <div className="priceInfo">
+      <br/><br/><br/>
       <div className="priceTitle">비용안내</div>
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={4}>
-            <Card sx={{ minWidth: 200, minHeight: 500, maxHeight: 700 }} elevation={5} >
+            <Card sx={{ minWidth: 150, minHeight: 500, maxHeight: 700 }} elevation={5} >
               <CardContent>
-                <Typography fontSize={24} fontWeight={600} gutterBottom variant="h5" component="div" textAlign="left">
+                <Typography fontSize={20} fontWeight={600} marginTop={2} gutterBottom variant="h5" component="div" textAlign="left">
                   {title[0]}
                 </Typography>
-                <Typography variant="h3" fontWeight={600} color={"#CBA585"} marginTop={5} textAlign="left" >
+                <br/><br/><br/>
+                <Typography id="priceNum" variant="h3" color={"#CBA585"}>
                   ₩ 000,000~
                 </Typography>
                 <Typography font-fontSize={18} fontWeight={400} marginTop={10} textAlign="left">
@@ -43,12 +39,13 @@ function Price() {
           </Grid>
 
           <Grid item xs={4}>
-            <Card sx={{ minWidth: 200, minHeight: 500, maxHeight: 700 }} elevation={5} >
+            <Card sx={{ minWidth: 150, minHeight: 500, maxHeight: 700 }} elevation={5} >
               <CardContent>
-                <Typography fontSize={24} fontWeight={600} gutterBottom variant="h5" component="div" textAlign="left">
+                <Typography fontSize={20} fontWeight={600} marginTop={2} gutterBottom variant="h5" component="div" textAlign="left">
                   {title[1]}
                 </Typography>
-                <Typography variant="h3" fontWeight={600} color={"#CBA585"} marginTop={5} textAlign="left" >
+                <br/><br/><br/>
+                <Typography id="priceNum" variant="h3" color={"#7A3200"}>
                   ₩ 000,000~
                 </Typography>
                 <Typography font-fontSize={18} fontWeight={400} marginTop={10} textAlign="left">
@@ -57,18 +54,19 @@ function Price() {
                   <CheckIcon /> 무료 문의<br /><br /><br />
                 </Typography>
                 <br /><br /><br />
-                <Button id='applicationButton' variant="contained">상표등록 신청하기</Button>
+                <Button id='applicationButton' variant="contained" style={{backgroundColor:"#7A3200"}}>상표등록 신청하기</Button>
               </CardContent>
             </Card>
           </Grid>
 
           <Grid item xs={4}>
-            <Card sx={{ minWidth: 200, minHeight: 500, maxHeight: 700 }} elevation={5} >
+            <Card sx={{ minWidth: 150, minHeight: 500, maxHeight: 700 }} elevation={5} >
               <CardContent>
-                <Typography fontSize={24} fontWeight={600} gutterBottom variant="h5" component="div" textAlign="left">
+                <Typography fontSize={20} fontWeight={600} marginTop={2} gutterBottom variant="h5" component="div" textAlign="left">
                   {title[2]}
                 </Typography>
-                <Typography variant="h3" fontWeight={600} color={"#CBA585"} marginTop={5} textAlign="left" >
+                <br/><br/><br/>
+                <Typography id="priceNum" variant="h3" color={"#005B49"}  >
                   ₩ 000,000~
                 </Typography>
                 <Typography font-fontSize={18} fontWeight={400} marginTop={10} textAlign="left">
@@ -77,7 +75,7 @@ function Price() {
                   <CheckIcon /> 무료 문의<br /><br /><br />
                 </Typography>
                 <br /><br /><br />
-                <Button id='applicationButton' variant="contained">상표등록 신청하기</Button>
+                <Button id='applicationButton' variant="contained" style={{backgroundColor:"#005B49"}}> 상표등록 신청하기</Button>
               </CardContent>
             </Card>
           </Grid>
