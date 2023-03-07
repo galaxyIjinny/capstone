@@ -20,12 +20,12 @@ public class MainController {
     @Autowired
     private CorporateApplicationService corporateApplicationService;
 
-    @GetMapping("/main")
+    @GetMapping("/main") // 메인 페이지
     public String markMain() {
         return "/main";
     }
 
-    @GetMapping("/main/application")
+    @GetMapping("/main/application") // 상표 등록 신청
     public String markApplication() {
         return "/main/markApplication";
     }
@@ -41,8 +41,25 @@ public class MainController {
         return ResponseEntity.status(HttpStatus.OK).body(createdDto);
     }
 
-    @GetMapping("/main/processInfo")
+
+
+    @GetMapping("/main/processInfo") // 절차안내
     public String processInfo() {
+        return "/main/processInfo";
+    }
+
+    @GetMapping("/main/costInfo") // 비용안내
+    public String costInfo() {
+        return "/main/costInfo";
+    }
+
+    @GetMapping("/main/corporateInfo") // 회사소개
+    public String corporateInfo() {
+        return "/main/corporateInfo";
+    }
+
+    @GetMapping("/main/faq") // FAQ
+    public String faq() {
         return "/main/processInfo";
     }
 }
