@@ -13,11 +13,9 @@ import { useState } from "react";
 import "./Navbar.scss";
 import logoImg from "../../assets/images/logo/복합.svg";
 const Navbar = () => {
-  const [menu, setMenu] = useState({
-    right: false,
-  });
+  const [open, setOpen] = useState(false);
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const toggleDrawer = (open) => (event) => {
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
@@ -25,33 +23,30 @@ const Navbar = () => {
       return;
     }
 
-    setMenu({ [anchor]: open });
+    setOpen(open);
   };
-
-  const CustomListItemText = styled(ListItemText)(({ theme }) => ({
-    fontSize: "40px",
-  }));
-  const list = (anchor) => (
+  const list = () => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 600 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      sx={{ width: "600px" }}
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
     >
-      <List sx={{ cursor: "pointer" }}>
+      <ul className="nav">
         {[
-          "신청내역",
-          "비용안내",
-          "절차안내",
-          "회사소개",
-          "등록후기",
-          "고객문의",
+          "신 청 내 역",
+          "비 용 안 내",
+          "절 차 안 내",
+          "회 사 소 개",
+          "등 록 후 기",
+          "고 객 문 의",
         ].map((text) => (
-          <ListItem key={text}>
-            <CustomListItemText primary={text} />
-          </ListItem>
+          <li>{text}</li>
         ))}
-      </List>
+      </ul>
+      <ul className="company">
+        <li>계좌</li>
+        <li>고객문의</li>
+      </ul>
     </Box>
   );
 
@@ -116,20 +111,18 @@ const Navbar = () => {
     fontFamily: "Pretendard",
     cursor: "pointer",
     textDecoration: "none",
-    marginRight: "2rem",
+    marginRight: "1rem",
     borderRadius: "3px",
     border: "2px solid #CBA585",
     padding: "13px 15px",
     transition: "0.2s",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "14px",
-      marginRight: "1rem",
-    },
+
     "&:hover": {
       color: "white",
       backgroundColor: "#CBA585",
     },
   }));
+
   return (
     <NavbarContainer>
       <Box
@@ -161,12 +154,8 @@ const Navbar = () => {
         }}
       >
         <ButtonLink>상표등록 신청하기</ButtonLink>
-        <CustomMenuIcon onClick={toggleDrawer("right", true)} />
-        <Drawer
-          anchor="right"
-          open={menu["right"]}
-          onClose={toggleDrawer("right", false)}
-        >
+        <CustomMenuIcon onClick={toggleDrawer(true)} />
+        <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
           {list("right")}
         </Drawer>
       </Box>
