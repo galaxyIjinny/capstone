@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -15,25 +17,18 @@ public class ConsultingAnswer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column
-    @Size(max=100)
-    private String document;
-    @Column
-    @Size(max=100)
-    @NotNull
-    private String title;
-    @Column
-    @Size(max=500)
-    @NotNull
-    private String answer;
     @OneToOne
     @JoinColumn(name = "consulting_id")
     private Consulting consulting;
     @Column
+    @Size(max=128)
     @NotNull
-    private String created_at;
+    private String title;
+    @Column
+    @Size(max=512)
+    @NotNull
+    private String answer;
     @Column
     @NotNull
-    private String updated_at;
+    private LocalDateTime created_at;
 }

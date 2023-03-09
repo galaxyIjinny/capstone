@@ -7,33 +7,31 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Entity
-public class CorporateAnswer {
+public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // 답변번호 대신 접수번호로 하면?
-
+    private Long id;
+    @OneToOne
+    @JoinColumn(name = "uid")
+    private User user;
     @Column
-    @Size(max=100)
+    @Size(max=256)
     private String document;
     @Column
-    @Size(max=100)
+    @Size(max=128)
     @NotNull
     private String title;
     @Column
-    @Size(max=500)
+    @Size(max=512)
     @NotNull
     private String answer;
-    @OneToOne
-    @JoinColumn(name = "application_id")
-    private CorporateApplication corporateApplication;
     @Column
     @NotNull
-    private String created_at;
-    @Column
-    @NotNull
-    private String updated_at;
+    private LocalDateTime created_at;
 }

@@ -6,7 +6,8 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,13 +17,20 @@ public class Consulting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     @Size(max=64)
     @NotNull
     private String name;
     @Column
-    @Size(max=64)
+    @Size(max=128)
+    @NotNull
+    private String title;
+    @Column
+    @Size(max=512)
+    @NotNull
+    private String content;
+    @Column
+    @Size(max=128)
     @NotNull
     private String email;
     @Column
@@ -30,37 +38,17 @@ public class Consulting {
     @NotNull
     private String phone;
     @Column
-    @Size(max=64)
-    @NotNull
-    private String brandname;
-    @Column
-    @Size(max=64)
-    @NotNull
-    private String type;
-    @Column
-    @Size(max=64)
-    @NotNull
-    private String category;
-    @Column
-    @Size(max=64)
-    @NotNull
-    private String classification;
-    @Column
-    @Size(max=100)
+    @Size(max=256)
     private String document;
     @Column
-    @Size(min=6, max=20)
+    @Size(min=8, max=64)
     @NotNull
     private String password;
     @Column
-    @Size(max=500)
-    @NotNull
-    private String content;
-    @Column
-    @Size(max=1)
+    @Size(max=16)
     @NotNull
     private String status;
     @Column
     @NotNull
-    private String created_at;
+    private LocalDateTime created_at;
 }

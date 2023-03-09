@@ -7,33 +7,43 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Entity
-public class PersonalBoard {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "application_id")
-    private PersonalApplication personalApplication; // 외래키 이름 통일 필요
+    @OneToOne
+    @JoinColumn(name = "mid")
+    private Mark mark;
     @Column
-    @Size(max=100)
-    private String document;
-    @Column
-    @Size(max=100)
+    @Size(max=64)
     @NotNull
-    private String title;
+    private String name;
     @Column
-    @Size(max=500)
+    @Size(max=128)
     @NotNull
-    private String content;
+    private String email;
+    @Column
+    @Size(max=64)
+    @NotNull
+    private String mobile;
+    @Column
+    @Size(max=64)
+    private String phone;
+    @Column
+    @Size(max=16)
+    @NotNull
+    private String status;
+    @Column
+    @Size(max=16)
+    @NotNull
+    private String approval;
     @Column
     @NotNull
-    private String created_at;
-    @Column
-    @NotNull
-    private String updated_at;
+    private LocalDateTime created_at;
 }

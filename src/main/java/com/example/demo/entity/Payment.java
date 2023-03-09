@@ -11,28 +11,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-public class CorporateBoard {
+public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "application_id")
-    private CorporateApplication corporateApplication; // 외래키 이름 통일 필요
+    @JoinColumn(name = "mid")
+    private Mark mark;
     @Column
-    @Size(max=100)
-    private String document;
-    @Column
-    @Size(max=100)
+    @Size(max=64)
     @NotNull
-    private String title;
+    private String name;
     @Column
-    @Size(max=500)
+    @Size(max=64)
     @NotNull
-    private String content;
+    private String date;
     @Column
+    @Size(max=64)
     @NotNull
-    private String created_at;
+    private String product;
     @Column
+    @Size(max=64)
     @NotNull
-    private String updated_at;
+    private String price;
+    @Column
+    @Size(max=64)
+    @NotNull
+    private String method;
 }

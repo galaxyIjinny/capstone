@@ -7,33 +7,47 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Entity
-public class Review {
+public class Mark {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     @Size(max=64)
     @NotNull
-    private String name;
+    private String mark_type;
     @Column
     @Size(max=64)
     @NotNull
     private String brand_name;
     @Column
-    @Size(max=128)
-    @NotNull
-    private String title;
-    @Column
     @Size(max=512)
     @NotNull
-    private String content;
+    private String description;
     @Column
+    @Size(max=256)
+    private String image;
+    @Column
+    @Size(max=256)
     @NotNull
-    private LocalDateTime created_at;
+    private String sector;
+    @Column
+    @Size(max=64)
+    @NotNull
+    private String type;
+    @Column
+    @Size(max=16)
+    @NotNull
+    private String poc;
+    @Column
+    @Size(max=256)
+    @NotNull
+    private String country;
+    @Column
+    @Size(max=64)
+    @NotNull
+    private String status;
 }

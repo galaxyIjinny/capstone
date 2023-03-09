@@ -1,21 +1,16 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CorporateApplicationDto;
-import com.example.demo.dto.PersonalApplicationDto;
-import com.example.demo.entity.PersonalApplication;
-import com.example.demo.service.CorporateApplicationService;
-import com.example.demo.service.PersonalApplicationService;
+import com.example.demo.service.CorporateService;
+import com.example.demo.service.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MainController {
     @Autowired
-    private PersonalApplicationService personalApplicationService;
+    private PersonalService personalService;
     @Autowired
-    private CorporateApplicationService corporateApplicationService;
+    private CorporateService corporateService;
 
     @GetMapping("/main") // 메인 페이지
     public String markMain() {
