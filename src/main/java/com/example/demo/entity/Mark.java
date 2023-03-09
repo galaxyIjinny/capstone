@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import com.example.demo.dto.MarkDto;
+import com.example.demo.dto.PersonalDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -50,4 +52,11 @@ public class Mark {
     @Size(max=64)
     @NotNull
     private String status;
+
+    public static Mark createMark(MarkDto dto) {
+        return new Mark(
+                dto.getId(), dto.getMark_type(), dto.getBrand_name(), dto.getDescription(), dto.getImage(),
+                dto.getSector(), dto.getType(), dto.getPoc(), dto.getCountry(), dto.getStatus()
+        );
+    }
 }
