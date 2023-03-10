@@ -136,8 +136,8 @@ const Navbar = () => {
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <NavbarLogo src={logoImg} alt="빠른상표" href="/" />{" "}
           <NavbarLinksBox>
-            <NavLink href="/">신청내역</NavLink>
-            <NavLink>비용안내</NavLink>
+            <NavLink to="/">신청내역</NavLink>
+            <NavLink to="/price">비용안내</NavLink>
             <NavLink>절차안내</NavLink>
             <NavLink>회사소개</NavLink>
             <NavLink to="/review">등록후기</NavLink>
