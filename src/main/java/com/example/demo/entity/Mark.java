@@ -59,4 +59,25 @@ public class Mark {
                 dto.getSector(), dto.getType(), dto.getPoc(), dto.getCountry(), dto.getStatus()
         );
     }
+
+    public void patch(Mark mark) {
+        if(mark.mark_type != null)
+            this.mark_type = mark.mark_type;
+        if(mark.brand_name != null)
+            this.brand_name = mark.brand_name;
+        if(mark.description != null)
+            this.description = mark.description;
+        if(mark.image != null)
+            this.image = mark.image;
+        if(mark.sector != null)
+            this.sector = mark.sector;
+        if(mark.type != null)
+            this.type = mark.type;
+        if(mark.poc != null)
+            this.poc = mark.poc;
+        if(mark.country != null)
+            this.country = mark.country;
+        if(mark.status != null)
+            this.status = mark.status;
+    }
 }
