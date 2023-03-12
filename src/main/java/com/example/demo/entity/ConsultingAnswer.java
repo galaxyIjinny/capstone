@@ -18,7 +18,7 @@ public class ConsultingAnswer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    @JoinColumn(name = "consulting_id")
+    @JoinColumn(name = "cid")
     private Consulting consulting;
     @Column
     @Size(max=128)
