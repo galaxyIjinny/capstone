@@ -20,7 +20,6 @@ public class PersonalDto {
     private String address;
     private String detail;
     private String zipcode;
-    private String password;
     private String agreement;
 
 
@@ -37,7 +36,6 @@ public class PersonalDto {
                 personal.getAddress(),
                 personal.getDetail(),
                 personal.getZipcode(),
-                personal.getPassword(),
                 personal.getAgreement()
         );
     }

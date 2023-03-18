@@ -17,8 +17,7 @@ public class UserDto {
     private String email;
     private String mobile;
     private String phone;
-    private String status;
-    private String approval;
+    private String acc_num;
     private LocalDateTime created_at;
 
     public static UserDto createUserDto(User user) {
@@ -29,8 +28,7 @@ public class UserDto {
                 user.getEmail(),
                 user.getMobile(),
                 user.getPhone(),
-                user.getStatus(),
-                user.getApproval(),
+                user.getAcc_num(),
                 user.getCreated_at()
         );
     }

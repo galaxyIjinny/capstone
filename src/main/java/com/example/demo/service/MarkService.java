@@ -24,34 +24,34 @@ public class MarkService {
     }
 
     @Transactional
-    public Mark create(MarkDto dto) {
+    public MarkDto create(MarkDto dto) {
         Mark mark = Mark.createMark(dto);
         if(mark.getId() != null)
             return null;
         Mark created = markRepository.save(mark);
-        return created;
-        //return MarkDto.createMarkDto(created);
+        return MarkDto.createMarkDto(created);
     }
 
     @Transactional
-    public Mark update(Long id, MarkDto dto) {
+    public MarkDto update(Long id, MarkDto dto) {
         Mark mark = Mark.createMark(dto);
         Mark target = markRepository.findById(id).orElse(null);
-        if(target == null || id != mark.getId()) {
+        if(target == null || !id.equals(mark.getId())) {
             log.info("error");
             return null;
         }
         target.patch(mark);
-        return markRepository.save(target);
+        Mark updated = markRepository.save(target);
+        return MarkDto.createMarkDto(updated);
     }
 
     @Transactional
-    public Mark delete(Long id) {
+    public MarkDto delete(Long id) {
         Mark target = markRepository.findById(id).orElse(null);
         if(target == null) {
             return null;
         }
         markRepository.delete(target);
-        return target;
+        return MarkDto.createMarkDto(target);
     }
 }

@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @Getter
 public class MarkDto {
     private Long id;
-    private String mark_type;
     private String brand_name;
     private String description;
     private String image;
@@ -18,13 +17,14 @@ public class MarkDto {
     private String type;
     private String poc;
     private String country;
+    private String madrid;
+    private String direct;
     private String status;
 
 
     public static MarkDto createMarkDto(Mark mark) {
         return new MarkDto(
                 mark.getId(),
-                mark.getMark_type(),
                 mark.getBrand_name(),
                 mark.getDescription(),
                 mark.getImage(),
@@ -32,6 +32,8 @@ public class MarkDto {
                 mark.getType(),
                 mark.getPoc(),
                 mark.getCountry(),
+                mark.getMadrid(),
+                mark.getDirect(),
                 mark.getStatus()
         );
     }

@@ -1,19 +1,20 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.CorporateDto;
 import com.example.demo.dto.MarkDto;
-import com.example.demo.entity.Mark;
-import com.example.demo.repository.MarkRepository;
+import com.example.demo.dto.PersonalDto;
+import com.example.demo.dto.UserDto;
 import com.example.demo.service.CorporateService;
 import com.example.demo.service.MarkService;
 import com.example.demo.service.PersonalService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/main")
 public class MainController {
     @Autowired
     private MarkService markService;
@@ -22,32 +23,23 @@ public class MainController {
     @Autowired
     private CorporateService corporateService;
     @Autowired
-    private MarkRepository markRepository;
-
+    private UserService userService;
 
     @GetMapping("/mark")
-    public List<Mark> showMarks() {
-        return markRepository.findAll();
+    public List<MarkDto> showMarks() {
+        return markService.mark();
     }
-    @PostMapping("/mark")
-    public Mark create(@RequestBody MarkDto dto) {
-        return markService.create(dto);
+    @GetMapping("/personal")
+    public List<PersonalDto> showPersonals() {
+        return personalService.personal();
     }
-    @PatchMapping("/mark/{id}")
-    public ResponseEntity<Mark> update(@PathVariable Long id, @RequestBody MarkDto dto) {
-        Mark mark = markService.update(id, dto);
-        if(mark != null)
-            return ResponseEntity.status(HttpStatus.OK).body(mark);
-        else
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    @GetMapping("/corporate")
+    public List<CorporateDto> showCorporates() {
+        return corporateService.corporate();
     }
-    @DeleteMapping("/mark/{id}")
-    public ResponseEntity<Mark> delete(@PathVariable Long id) {
-        Mark mark = markService.delete(id);
-        if(mark != null)
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        else
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    @GetMapping("/user")
+    public List<UserDto> showUsers() {
+        return userService.user();
     }
 
 
@@ -55,7 +47,8 @@ public class MainController {
 
 
 
-    @GetMapping("/main") // 메인 페이지
+
+    /*@GetMapping("/main") // 메인 페이지
     public String markMain() {
         return "/main";
     }
@@ -91,5 +84,5 @@ public class MainController {
     @GetMapping("/main/faq") // FAQ
     public String faq() {
         return "/main/processInfo";
-    }
+    }*/
 }

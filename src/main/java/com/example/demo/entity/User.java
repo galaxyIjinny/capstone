@@ -1,16 +1,20 @@
 package com.example.demo.entity;
 
+import com.example.demo.dto.UserDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 @Entity
 public class User {
@@ -36,14 +40,30 @@ public class User {
     @Size(max=64)
     private String phone;
     @Column
-    @Size(max=16)
+    @Size(max=64)
     @NotNull
-    private String status;
+    private String acc_num;
     @Column
-    @Size(max=16)
-    @NotNull
-    private String approval;
-    @Column
-    @NotNull
+    @CreatedDate
     private LocalDateTime created_at;
+
+    public void patch(User user) {
+        if(user.name != null)
+            this.name = user.getName();
+        if(user.email != null)
+            this.email = user.getEmail();
+        if(user.mobile != null)
+            this.mobile = user.getMobile();
+        if(user.phone != null)
+            this.phone = user.getPhone();
+        if(user.acc_num != null)
+            this.acc_num = user.getAcc_num();
+    }
+
+    public static User createUser(UserDto dto, Mark mark) {
+        return new User(
+                dto.getId(), mark, dto.getName(), dto.getEmail(), dto.getMobile(), dto.getPhone(),
+                dto.getAcc_num(), dto.getCreated_at()
+        );
+    }
 }

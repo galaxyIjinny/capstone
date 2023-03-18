@@ -25,7 +25,6 @@ public class CorporateDto {
     private String address;
     private String detail;
     private String zipcode;
-    private String password;
     private String agreement;
 
     public static CorporateDto createCorporateDto(Corporate corporate) {
@@ -45,7 +44,6 @@ public class CorporateDto {
                 corporate.getAddress(),
                 corporate.getDetail(),
                 corporate.getZipcode(),
-                corporate.getPassword(),
                 corporate.getAgreement()
         );
     }

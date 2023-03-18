@@ -69,10 +69,6 @@ public class Corporate {
     @NotNull
     private String zipcode;
     @Column
-    @Size(min=8, max=64)
-    @NotNull
-    private String password;
-    @Column
     @Size(max=16)
     @NotNull
     private String agreement;
@@ -82,7 +78,38 @@ public class Corporate {
         return new Corporate(
                 dto.getId(), mark, dto.getName_kor(), dto.getName_eng(), dto.getBrn(), dto.getCrn(), dto.getName(),
                 dto.getSsn(), dto.getMobile(), dto.getPhone(), dto.getEmail(), dto.getSeal(), dto.getAddress(),
-                dto.getDetail(), dto.getZipcode(), dto.getPassword(), dto.getAgreement()
+                dto.getDetail(), dto.getZipcode(), dto.getAgreement()
         );
+    }
+
+    public void patch(Corporate corporate) {
+        if(corporate.name_kor != null)
+            this.name_kor = corporate.getName_kor();
+        if(corporate.name_eng != null)
+            this.name_eng = corporate.getName_eng();
+        if(corporate.brn != null)
+            this.brn = corporate.getBrn();
+        if(corporate.crn != null)
+            this.crn = corporate.getCrn();
+        if(corporate.name != null)
+            this.name = corporate.getName();
+        if(corporate.ssn != null)
+            this.ssn = corporate.getSsn();
+        if(corporate.mobile != null)
+            this.mobile = corporate.getMobile();
+        if(corporate.phone != null)
+            this.phone = corporate.getPhone();
+        if(corporate.email != null)
+            this.email = corporate.getEmail();
+        if(corporate.seal != null)
+            this.seal = corporate.getSeal();
+        if(corporate.address != null)
+            this.address = corporate.getAddress();
+        if(corporate.detail != null)
+            this.detail = corporate.getDetail();
+        if(corporate.zipcode != null)
+            this.zipcode = corporate.getZipcode();
+        if(corporate.agreement != null)
+            this.agreement = corporate.getAgreement();
     }
 }
