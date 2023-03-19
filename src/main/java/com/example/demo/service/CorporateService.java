@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.CorporateDto;
 import com.example.demo.entity.Corporate;
 import com.example.demo.entity.Mark;
+import com.example.demo.entity.Personal;
 import com.example.demo.repository.CorporateRepository;
 import com.example.demo.repository.MarkRepository;
 import jakarta.transaction.Transactional;
@@ -31,5 +32,10 @@ public class CorporateService {
         Corporate corporate = Corporate.createCorporate(dto, mark);
         Corporate created = corporateRepository.save(corporate);
         return CorporateDto.createCorporateDto(created);
+    }
+
+    @Transactional
+    public Corporate createCorporate(Corporate corporate) {
+        return corporateRepository.save(corporate);
     }
 }
