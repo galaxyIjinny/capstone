@@ -2,12 +2,14 @@ package com.example.demo.dto;
 
 import com.example.demo.entity.Mark;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class MarkDto {
     private Long id;
     private String brand_name;
@@ -23,18 +25,19 @@ public class MarkDto {
 
 
     public static MarkDto createMarkDto(Mark mark) {
-        return new MarkDto(
-                mark.getId(),
-                mark.getBrand_name(),
-                mark.getDescription(),
-                mark.getImage(),
-                mark.getSector(),
-                mark.getType(),
-                mark.getPoc(),
-                mark.getCountry(),
-                mark.getMadrid(),
-                mark.getDirect(),
-                mark.getStatus()
-        );
+        return MarkDto.builder()
+                .id(mark.getId())
+                .brand_name(mark.getBrand_name())
+                .description(mark.getDescription())
+                .image(mark.getImage())
+                .sector(mark.getSector())
+                .type(mark.getType())
+                .poc(mark.getPoc())
+                .country(mark.getCountry())
+                .madrid(mark.getMadrid())
+                .direct(mark.getDirect())
+                .status(mark.getStatus())
+                .build();
     }
+
 }

@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-//@RequestMapping("/register")
+@RequestMapping("/register")
 public class RegisterController {
     @Autowired
     private MarkService markService;
@@ -22,13 +22,31 @@ public class RegisterController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/register")
-    public ResponseEntity<RegisterDto> create(@RequestBody RegisterDto dto) {
+    @PostMapping("/personal")
+    public ResponseEntity<RegisterDto> createPersonal(@RequestBody RegisterDto dto) {
         MarkDto mark = markService.create(dto.getMark());
         PersonalDto personal = personalService.create(mark.getId(), dto.getPersonal());
+        UserDto user = userService.create(mark.getId(), dto.getUser());
+
+        RegisterDto registerDto = RegisterDto.builder()
+                .mark(mark)
+                .personal(personal)
+                .user(user)
+                .build();
+        return ResponseEntity.status(HttpStatus.OK).body(registerDto);
+    }
+
+    @PostMapping("/corporate")
+    public ResponseEntity<RegisterDto> createCorporate(@RequestBody RegisterDto dto) {
+        MarkDto mark = markService.create(dto.getMark());
         CorporateDto corporate = corporateService.create(mark.getId(), dto.getCorporate());
         UserDto user = userService.create(mark.getId(), dto.getUser());
-        RegisterDto registerDto = new RegisterDto(mark, personal, corporate, user);
+
+        RegisterDto registerDto = RegisterDto.builder()
+                .mark(mark)
+                .corporate(corporate)
+                .user(user)
+                .build();
         return ResponseEntity.status(HttpStatus.OK).body(registerDto);
     }
 }

@@ -5,12 +5,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder
 @Entity
 public class Mark {
     @Id
@@ -56,11 +58,19 @@ public class Mark {
     private String status;
 
     public static Mark createMark(MarkDto dto) {
-        return new Mark(
-                dto.getId(), dto.getBrand_name(), dto.getDescription(), dto.getImage(),
-                dto.getSector(), dto.getType(), dto.getPoc(), dto.getCountry(), dto.getMadrid(),
-                dto.getDirect(), dto.getStatus()
-        );
+        return Mark.builder()
+                .id(dto.getId())
+                .brand_name(dto.getBrand_name())
+                .description(dto.getDescription())
+                .image(dto.getImage())
+                .sector(dto.getSector())
+                .type(dto.getType())
+                .poc(dto.getPoc())
+                .country(dto.getCountry())
+                .madrid(dto.getMadrid())
+                .direct(dto.getDirect())
+                .status(dto.getStatus())
+                .build();
     }
 
     public void patch(Mark mark) {

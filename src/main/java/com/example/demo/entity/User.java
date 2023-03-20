@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Getter
+@Builder
 @Entity
 public class User {
     @Id
@@ -61,9 +63,15 @@ public class User {
     }
 
     public static User createUser(UserDto dto, Mark mark) {
-        return new User(
-                dto.getId(), mark, dto.getName(), dto.getEmail(), dto.getMobile(), dto.getPhone(),
-                dto.getAcc_num(), dto.getCreated_at()
-        );
+        return User.builder()
+                .id(dto.getId())
+                .mark(mark)
+                .name(dto.getName())
+                .email(dto.getEmail())
+                .mobile(dto.getMobile())
+                .phone(dto.getPhone())
+                .acc_num(dto.getAcc_num())
+                .created_at(dto.getCreated_at())
+                .build();
     }
 }
