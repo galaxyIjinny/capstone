@@ -5,12 +5,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder
 @Entity
 public class Faq {
     @Id
@@ -33,8 +35,10 @@ public class Faq {
     }
 
     public static Faq createFaq(FaqDto dto) {
-        return new Faq(
-                dto.getId(), dto.getTitle(), dto.getContent()
-        );
+        return Faq.builder()
+                .id(dto.getId())
+                .title(dto.getTitle())
+                .content(dto.getContent())
+                .build();
     }
 }
