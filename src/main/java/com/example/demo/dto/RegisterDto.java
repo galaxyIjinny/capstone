@@ -10,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class RegisterDto {
     private MarkDto mark;
     private PersonalDto personal;
