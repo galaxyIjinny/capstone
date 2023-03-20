@@ -34,15 +34,5 @@ public class PersonalService {
         return PersonalDto.createPersonalDto(created);
     }
 
-    @Transactional
-    public Personal update(Long id, PersonalDto personalDto) {
-        Personal personal = Personal.createPersonal(personalDto, id);
-        Mark target = markRepository.findById(id).orElse(null);
-        if(target == null || id != mark.getId()) {
-            log.info("error");
-            return null;
-        }
-        target.patch(mark);
-        return markRepository.save(target);
-    }
+
 }
