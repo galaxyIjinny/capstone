@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.faq;
 
 import com.example.demo.dto.FaqDto;
 import com.example.demo.entity.Faq;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class FaqService {
+public class FaqServiceImpl implements  FaqService {
     @Autowired
     private FaqRepository faqRepository;
 

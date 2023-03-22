@@ -2,12 +2,14 @@ package com.example.demo.dto;
 
 import com.example.demo.entity.Personal;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class PersonalDto {
     private Long id;
     private Long mid;
@@ -24,19 +26,20 @@ public class PersonalDto {
 
 
     public static PersonalDto createPersonalDto(Personal personal) {
-        return new PersonalDto(
-                personal.getId(),
-                personal.getMark().getId(),
-                personal.getName_kor(),
-                personal.getName_eng(),
-                personal.getSsn(),
-                personal.getEmail(),
-                personal.getMobile(),
-                personal.getPhone(),
-                personal.getAddress(),
-                personal.getDetail(),
-                personal.getZipcode(),
-                personal.getAgreement()
-        );
+        return PersonalDto.builder()
+                .id(personal.getId())
+                .mid(personal.getMark().getId())
+                .name_kor(personal.getName_kor())
+                .name_eng(personal.getName_eng())
+                .ssn(personal.getSsn())
+                .email(personal.getEmail())
+                .mobile(personal.getMobile())
+                .phone(personal.getPhone())
+                .address(personal.getAddress())
+                .detail(personal.getDetail())
+                .zipcode(personal.getZipcode())
+                .agreement(personal.getAgreement())
+                .build();
     }
+
 }

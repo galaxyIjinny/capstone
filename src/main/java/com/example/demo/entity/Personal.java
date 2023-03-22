@@ -2,21 +2,24 @@ package com.example.demo.entity;
 
 import com.example.demo.dto.PersonalDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder
 @Entity
 public class Personal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mid")
     private Mark mark;
     @Column
@@ -34,6 +37,7 @@ public class Personal {
     @Column
     @Size(max=128)
     @NotNull
+    @Email
     private String email;
     @Column
     @Size(max=64)
@@ -60,11 +64,20 @@ public class Personal {
     private String agreement;
 
     public static Personal createPersonal(PersonalDto dto, Mark mark) {
-        return new Personal(
-                dto.getId(), mark, dto.getName_kor(), dto.getName_eng(), dto.getSsn(), dto.getEmail(),
-                dto.getMobile(), dto.getPhone(), dto.getAddress(), dto.getDetail(), dto.getZipcode(),
-                dto.getAgreement()
-        );
+        return Personal.builder()
+                .id(dto.getId())
+                .mark(mark)
+                .name_kor(dto.getName_kor())
+                .name_eng(dto.getName_eng())
+                .ssn(dto.getSsn())
+                .email(dto.getEmail())
+                .mobile(dto.getMobile())
+                .phone(dto.getPhone())
+                .address(dto.getAddress())
+                .detail(dto.getDetail())
+                .zipcode(dto.getZipcode())
+                .agreement(dto.getAgreement())
+                .build();
     }
 
     public void patch(Personal personal) {

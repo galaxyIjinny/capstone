@@ -1,14 +1,15 @@
 package com.example.demo.dto;
 
 import com.example.demo.entity.Corporate;
-import com.example.demo.entity.Mark;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class CorporateDto {
     private Long id;
     private Long mid;
@@ -28,24 +29,25 @@ public class CorporateDto {
     private String agreement;
 
     public static CorporateDto createCorporateDto(Corporate corporate) {
-        return new CorporateDto(
-                corporate.getId(),
-                corporate.getMark().getId(),
-                corporate.getName_kor(),
-                corporate.getName_eng(),
-                corporate.getBrn(),
-                corporate.getCrn(),
-                corporate.getName(),
-                corporate.getSsn(),
-                corporate.getMobile(),
-                corporate.getPhone(),
-                corporate.getEmail(),
-                corporate.getSeal(),
-                corporate.getAddress(),
-                corporate.getDetail(),
-                corporate.getZipcode(),
-                corporate.getAgreement()
-        );
+        return CorporateDto.builder()
+                .id(corporate.getId())
+                .mid(corporate.getMark().getId())
+                .name_kor(corporate.getName_kor())
+                .name_eng(corporate.getName_eng())
+                .brn(corporate.getBrn())
+                .crn(corporate.getCrn())
+                .name(corporate.getName())
+                .ssn(corporate.getSsn())
+                .mobile(corporate.getMobile())
+                .phone(corporate.getPhone())
+                .email(corporate.getEmail())
+                .seal(corporate.getSeal())
+                .address(corporate.getAddress())
+                .detail(corporate.getDetail())
+                .zipcode(corporate.getZipcode())
+                .agreement(corporate.getAgreement())
+                .build();
     }
+
 
 }

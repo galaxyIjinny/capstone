@@ -2,9 +2,11 @@ package com.example.demo.entity;
 
 import com.example.demo.dto.UserDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -16,12 +18,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Getter
+@Builder
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mid")
     private Mark mark;
     @Column
@@ -31,6 +34,7 @@ public class User {
     @Column
     @Size(max=128)
     @NotNull
+    @Email
     private String email;
     @Column
     @Size(max=64)
@@ -61,9 +65,15 @@ public class User {
     }
 
     public static User createUser(UserDto dto, Mark mark) {
-        return new User(
-                dto.getId(), mark, dto.getName(), dto.getEmail(), dto.getMobile(), dto.getPhone(),
-                dto.getAcc_num(), dto.getCreated_at()
-        );
+        return User.builder()
+                .id(dto.getId())
+                .mark(mark)
+                .name(dto.getName())
+                .email(dto.getEmail())
+                .mobile(dto.getMobile())
+                .phone(dto.getPhone())
+                .acc_num(dto.getAcc_num())
+                .created_at(dto.getCreated_at())
+                .build();
     }
 }

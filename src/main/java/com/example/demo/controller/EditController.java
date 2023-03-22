@@ -1,17 +1,18 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.MarkDto;
-import com.example.demo.service.MarkService;
+import com.example.demo.service.mark.MarkService;
+import com.example.demo.service.mark.MarkServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/edit")
+@RequestMapping("/api/edit")
 @RestController
 public class EditController {
     @Autowired
-    private MarkService markService;
+    private MarkServiceImpl markService;
 
     @PatchMapping("/mark/{id}")
     public ResponseEntity<MarkDto> update(@PathVariable Long id, @RequestBody MarkDto dto) {
