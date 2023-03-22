@@ -4,10 +4,14 @@ import com.example.demo.dto.CorporateDto;
 import com.example.demo.dto.MarkDto;
 import com.example.demo.dto.PersonalDto;
 import com.example.demo.dto.UserDto;
-import com.example.demo.service.CorporateService;
-import com.example.demo.service.MarkService;
-import com.example.demo.service.PersonalService;
-import com.example.demo.service.UserService;
+import com.example.demo.service.corporate.CorporateService;
+import com.example.demo.service.corporate.CorporateServiceImpl;
+import com.example.demo.service.mark.MarkService;
+import com.example.demo.service.mark.MarkServiceImpl;
+import com.example.demo.service.personal.PersonalService;
+import com.example.demo.service.personal.PersonalServiceImpl;
+import com.example.demo.service.user.UserService;
+import com.example.demo.service.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,13 +21,13 @@ import java.util.List;
 @RequestMapping("/api/main")
 public class MainController {
     @Autowired
-    private MarkService markService;
+    private MarkServiceImpl markService;
     @Autowired
-    private PersonalService personalService;
+    private PersonalServiceImpl personalService;
     @Autowired
-    private CorporateService corporateService;
+    private CorporateServiceImpl corporateService;
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @GetMapping("/mark")
     public List<MarkDto> showMarks() {

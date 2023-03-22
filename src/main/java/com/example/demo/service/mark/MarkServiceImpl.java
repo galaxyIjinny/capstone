@@ -1,7 +1,6 @@
-package com.example.demo.service;
+package com.example.demo.service.mark;
 
 import com.example.demo.dto.MarkDto;
-import com.example.demo.dto.PersonalDto;
 import com.example.demo.entity.Mark;
 import com.example.demo.repository.MarkRepository;
 import jakarta.transaction.Transactional;
@@ -11,9 +10,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 @Slf4j
 @Service
-public class MarkService {
+public class MarkServiceImpl implements MarkService {
     @Autowired
     private MarkRepository markRepository;
 
