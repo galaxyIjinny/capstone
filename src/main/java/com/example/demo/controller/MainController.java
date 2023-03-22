@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/main")
+@RequestMapping("/api/main")
 public class MainController {
     @Autowired
     private MarkService markService;

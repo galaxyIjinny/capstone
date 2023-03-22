@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import com.example.demo.dto.PersonalDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -36,6 +37,7 @@ public class Personal {
     @Column
     @Size(max=128)
     @NotNull
+    @Email
     private String email;
     @Column
     @Size(max=64)

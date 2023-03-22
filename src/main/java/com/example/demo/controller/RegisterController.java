@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/register")
+@RequestMapping("/api/register")
 public class RegisterController {
     @Autowired
     private MarkService markService;
