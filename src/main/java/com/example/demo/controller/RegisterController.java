@@ -1,13 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.*;
-import com.example.demo.service.corporate.CorporateService;
 import com.example.demo.service.corporate.CorporateServiceImpl;
-import com.example.demo.service.mark.MarkService;
 import com.example.demo.service.mark.MarkServiceImpl;
-import com.example.demo.service.personal.PersonalService;
 import com.example.demo.service.personal.PersonalServiceImpl;
-import com.example.demo.service.user.UserService;
 import com.example.demo.service.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,12 +23,12 @@ public class RegisterController {
     private UserServiceImpl userService;
 
     @PostMapping("/personal")
-    public ResponseEntity<RegisterDto> createPersonal(@RequestBody RegisterDto dto) {
+    public ResponseEntity<InfoDto> createPersonal(@RequestBody InfoDto dto) {
         MarkDto mark = markService.create(dto.getMark());
         PersonalDto personal = personalService.create(mark.getId(), dto.getPersonal());
         UserDto user = userService.create(mark.getId(), dto.getUser());
 
-        RegisterDto registerDto = RegisterDto.builder()
+        InfoDto registerDto = InfoDto.builder()
                 .mark(mark)
                 .personal(personal)
                 .user(user)
@@ -41,12 +37,12 @@ public class RegisterController {
     }
 
     @PostMapping("/corporate")
-    public ResponseEntity<RegisterDto> createCorporate(@RequestBody RegisterDto dto) {
+    public ResponseEntity<InfoDto> createCorporate(@RequestBody InfoDto dto) {
         MarkDto mark = markService.create(dto.getMark());
         CorporateDto corporate = corporateService.create(mark.getId(), dto.getCorporate());
         UserDto user = userService.create(mark.getId(), dto.getUser());
 
-        RegisterDto registerDto = RegisterDto.builder()
+        InfoDto registerDto = InfoDto.builder()
                 .mark(mark)
                 .corporate(corporate)
                 .user(user)

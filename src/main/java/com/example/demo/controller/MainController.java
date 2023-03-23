@@ -1,20 +1,14 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CorporateDto;
-import com.example.demo.dto.MarkDto;
-import com.example.demo.dto.PersonalDto;
-import com.example.demo.dto.UserDto;
-import com.example.demo.service.corporate.CorporateService;
+import com.example.demo.dto.*;
 import com.example.demo.service.corporate.CorporateServiceImpl;
-import com.example.demo.service.mark.MarkService;
 import com.example.demo.service.mark.MarkServiceImpl;
-import com.example.demo.service.personal.PersonalService;
 import com.example.demo.service.personal.PersonalServiceImpl;
-import com.example.demo.service.user.UserService;
 import com.example.demo.service.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,9 +23,59 @@ public class MainController {
     @Autowired
     private UserServiceImpl userService;
 
+    @GetMapping("/info")
+    public List<InfoDto> showAllInfo() {
+        List<PersonalDto> personalDtoList = personalService.personal();
+        List<CorporateDto> corporateDtoList = corporateService.corporate();
+        List<UserDto> userDtoList = userService.user();
+        List<InfoDto> infoDtoList = new ArrayList<>();
+
+        for (UserDto userDto : userDtoList) {
+            MarkDto mark = markService.mark(userDto.getMid());
+            CorporateDto corporate = null;
+            PersonalDto personal = null;
+
+            if(mark.getPoc().equals("corporate")) {
+                for (CorporateDto corporateDto : corporateDtoList) {
+                    if (corporateDto.getMid() == mark.getId()) {
+                        corporate = corporateDto;
+                        break;
+                    }
+                }
+
+                InfoDto infoDto = InfoDto.builder()
+                        .mark(mark)
+                        .corporate(corporate)
+                        .user(userDto)
+                        .build();
+
+                infoDtoList.add(infoDto);
+            }
+
+            else if(mark.getPoc().equals("personal")) {
+                for (PersonalDto personalDto : personalDtoList) {
+                    if (personalDto.getMid() == mark.getId()) {
+                        personal = personalDto;
+                        break;
+                    }
+                }
+
+                InfoDto infoDto = InfoDto.builder()
+                        .mark(mark)
+                        .personal(personal)
+                        .user(userDto)
+                        .build();
+
+                infoDtoList.add(infoDto);
+            }
+
+        }
+
+        return infoDtoList;
+    }
     @GetMapping("/mark")
     public List<MarkDto> showMarks() {
-        return markService.mark();
+        return markService.marks();
     }
     @GetMapping("/personal")
     public List<PersonalDto> showPersonals() {
