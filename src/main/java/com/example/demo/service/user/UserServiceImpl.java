@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserDto update(Long id, UserDto dto) {
         User target = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("error"));
@@ -47,6 +48,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserDto delete(Long id) {
         User target = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("error"));
