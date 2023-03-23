@@ -37,4 +37,21 @@ public class CorporateServiceImpl implements CorporateService {
         Corporate created = corporateRepository.save(corporate);
         return CorporateDto.createCorporateDto(created);
     }
+
+    @Override
+    public CorporateDto update(Long id, CorporateDto dto) {
+        Corporate target = corporateRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
+        target.patch(dto);
+        Corporate updated = corporateRepository.save(target);
+        return CorporateDto.createCorporateDto(updated);
+    }
+
+    @Override
+    public CorporateDto delete(Long id) {
+        Corporate target = corporateRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
+        corporateRepository.delete(target);
+        return CorporateDto.createCorporateDto(target);
+    }
 }

@@ -27,10 +27,10 @@ public class Faq {
     @NotNull
     private String content;
 
-    public void patch(Faq faq) {
-        if(faq.title != null)
+    public void patch(FaqDto faq) {
+        if(faq.getTitle() != null)
             this.title = faq.getTitle();
-        if(faq.content != null)
+        if(faq.getContent() != null)
             this.content = faq.getContent();
     }
 

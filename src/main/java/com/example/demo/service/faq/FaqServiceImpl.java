@@ -17,12 +17,14 @@ public class FaqServiceImpl implements  FaqService {
     @Autowired
     private FaqRepository faqRepository;
 
+    @Override
     public List<FaqDto> faq() {
         return faqRepository.findAll().stream()
                 .map(FaqDto::createFaqDto)
                 .collect(Collectors.toList());
     }
 
+    @Override
     @Transactional
     public FaqDto create(FaqDto dto) {
         Faq faq = Faq.createFaq(dto);
@@ -32,25 +34,21 @@ public class FaqServiceImpl implements  FaqService {
         return FaqDto.createFaqDto(created);
     }
 
+    @Override
     @Transactional
     public FaqDto update(Long id, FaqDto dto) {
-        Faq faq = Faq.createFaq(dto);
-        Faq target = faqRepository.findById(id).orElse(null);
-        if(target == null || !id.equals(faq.getId())) {
-            log.info("error");
-            return null;
-        }
-        target.patch(faq);
+        Faq target = faqRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
+        target.patch(dto);
         Faq updated = faqRepository.save(target);
         return FaqDto.createFaqDto(updated);
     }
 
+    @Override
     @Transactional
     public FaqDto delete(Long id) {
-        Faq target = faqRepository.findById(id).orElse(null);
-        if(target == null) {
-            return null;
-        }
+        Faq target = faqRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
         faqRepository.delete(target);
         return FaqDto.createFaqDto(target);
     }

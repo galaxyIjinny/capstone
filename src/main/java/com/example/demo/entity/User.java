@@ -51,16 +51,16 @@ public class User {
     @CreatedDate
     private LocalDateTime created_at;
 
-    public void patch(User user) {
-        if(user.name != null)
+    public void patch(UserDto user) {
+        if(user.getName() != null)
             this.name = user.getName();
-        if(user.email != null)
+        if(user.getEmail() != null)
             this.email = user.getEmail();
-        if(user.mobile != null)
+        if(user.getMobile() != null)
             this.mobile = user.getMobile();
-        if(user.phone != null)
+        if(user.getPhone() != null)
             this.phone = user.getPhone();
-        if(user.acc_num != null)
+        if(user.getAcc_num() != null)
             this.acc_num = user.getAcc_num();
     }
 

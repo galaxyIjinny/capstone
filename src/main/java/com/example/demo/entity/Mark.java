@@ -73,22 +73,22 @@ public class Mark {
                 .build();
     }
 
-    public void patch(Mark mark) {
-        if(mark.brand_name != null)
+    public void patch(MarkDto mark) {
+        if(mark.getBrand_name() != null)
             this.brand_name = mark.getBrand_name();
-        if(mark.description != null)
+        if(mark.getDescription() != null)
             this.description = mark.getDescription();
-        if(mark.image != null)
+        if(mark.getImage() != null)
             this.image = mark.getImage();
-        if(mark.sector != null)
+        if(mark.getSector() != null)
             this.sector = mark.getSector();
-        if(mark.type != null)
+        if(mark.getType() != null)
             this.type = mark.getType();
-        if(mark.poc != null)
+        if(mark.getPoc() != null)
             this.poc = mark.getPoc();
-        if(mark.country != null)
+        if(mark.getCountry() != null)
             this.country = mark.getCountry();
-        if(mark.status != null)
+        if(mark.getStatus() != null)
             this.status = mark.getStatus();
     }
 }

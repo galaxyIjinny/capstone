@@ -100,34 +100,34 @@ public class Corporate {
     }
 
 
-    public void patch(Corporate corporate) {
-        if(corporate.name_kor != null)
+    public void patch(CorporateDto corporate) {
+        if(corporate.getName_kor() != null)
             this.name_kor = corporate.getName_kor();
-        if(corporate.name_eng != null)
+        if(corporate.getName_eng() != null)
             this.name_eng = corporate.getName_eng();
-        if(corporate.brn != null)
+        if(corporate.getBrn() != null)
             this.brn = corporate.getBrn();
-        if(corporate.crn != null)
+        if(corporate.getCrn() != null)
             this.crn = corporate.getCrn();
-        if(corporate.name != null)
+        if(corporate.getName() != null)
             this.name = corporate.getName();
-        if(corporate.ssn != null)
+        if(corporate.getSsn() != null)
             this.ssn = corporate.getSsn();
-        if(corporate.mobile != null)
+        if(corporate.getMobile() != null)
             this.mobile = corporate.getMobile();
-        if(corporate.phone != null)
+        if(corporate.getPhone() != null)
             this.phone = corporate.getPhone();
-        if(corporate.email != null)
+        if(corporate.getEmail() != null)
             this.email = corporate.getEmail();
-        if(corporate.seal != null)
+        if(corporate.getSeal() != null)
             this.seal = corporate.getSeal();
-        if(corporate.address != null)
+        if(corporate.getAddress() != null)
             this.address = corporate.getAddress();
-        if(corporate.detail != null)
+        if(corporate.getDetail() != null)
             this.detail = corporate.getDetail();
-        if(corporate.zipcode != null)
+        if(corporate.getZipcode() != null)
             this.zipcode = corporate.getZipcode();
-        if(corporate.agreement != null)
+        if(corporate.getAgreement() != null)
             this.agreement = corporate.getAgreement();
     }
 }

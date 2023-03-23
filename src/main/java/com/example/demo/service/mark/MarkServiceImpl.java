@@ -29,18 +29,21 @@ public class MarkServiceImpl implements MarkService {
     @Autowired
     private UserRepository userRepository;
 
+    @Override
     public List<MarkDto> marks() {
         return markRepository.findAll().stream()
                 .map(MarkDto::createMarkDto)
                 .collect(Collectors.toList());
     }
 
+    @Override
     public MarkDto mark(Long id) {
         Mark mark = markRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("error"));
         return MarkDto.createMarkDto(mark);
     }
 
+    @Override
     @Transactional
     public MarkDto create(MarkDto dto) {
         Mark mark = Mark.createMark(dto);
@@ -50,19 +53,17 @@ public class MarkServiceImpl implements MarkService {
         return MarkDto.createMarkDto(created);
     }
 
+    @Override
     @Transactional
     public MarkDto update(Long id, MarkDto dto) {
-        Mark mark = Mark.createMark(dto);
-        Mark target = markRepository.findById(id).orElse(null);
-        if(target == null || !id.equals(mark.getId())) {
-            log.info("error");
-            return null;
-        }
-        target.patch(mark);
+        Mark target = markRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
+        target.patch(dto);
         Mark updated = markRepository.save(target);
         return MarkDto.createMarkDto(updated);
     }
 
+    @Override
     @Transactional
     public MarkDto delete(Long id) {
         Mark target = markRepository.findById(id)
