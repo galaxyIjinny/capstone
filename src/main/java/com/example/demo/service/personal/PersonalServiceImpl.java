@@ -28,7 +28,8 @@ public class PersonalServiceImpl implements PersonalService {
     }
     @Transactional
     public PersonalDto create(Long mid, PersonalDto dto) {
-        Mark mark = markRepository.findById(mid).orElseThrow(() -> new IllegalArgumentException("error"));
+        Mark mark = markRepository.findById(mid)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
         Personal personal = Personal.createPersonal(dto, mark);
         Personal created = personalRepository.save(personal);
         return PersonalDto.createPersonalDto(created);

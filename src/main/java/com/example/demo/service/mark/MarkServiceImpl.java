@@ -1,8 +1,14 @@
 package com.example.demo.service.mark;
 
 import com.example.demo.dto.MarkDto;
+import com.example.demo.entity.Corporate;
 import com.example.demo.entity.Mark;
+import com.example.demo.entity.Personal;
+import com.example.demo.entity.User;
+import com.example.demo.repository.CorporateRepository;
 import com.example.demo.repository.MarkRepository;
+import com.example.demo.repository.PersonalRepository;
+import com.example.demo.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +22,23 @@ import java.util.stream.Collectors;
 public class MarkServiceImpl implements MarkService {
     @Autowired
     private MarkRepository markRepository;
+    @Autowired
+    private CorporateRepository corporateRepository;
+    @Autowired
+    private PersonalRepository personalRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    public List<MarkDto> mark() {
+    public List<MarkDto> marks() {
         return markRepository.findAll().stream()
                 .map(MarkDto::createMarkDto)
                 .collect(Collectors.toList());
+    }
+
+    public MarkDto mark(Long id) {
+        Mark mark = markRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
+        return MarkDto.createMarkDto(mark);
     }
 
     @Transactional
@@ -47,10 +65,22 @@ public class MarkServiceImpl implements MarkService {
 
     @Transactional
     public MarkDto delete(Long id) {
-        Mark target = markRepository.findById(id).orElse(null);
-        if(target == null) {
-            return null;
+        Mark target = markRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
+
+        if(target.getPoc().equals("corporate")) {
+            Corporate corporate = corporateRepository.findByMark(target);
+            corporateRepository.delete(corporate);
         }
+
+        else if(target.getPoc().equals("personal")) {
+            Personal personal = personalRepository.findByMark(target);
+            personalRepository.delete(personal);
+        }
+
+        User user = userRepository.findByMark(target);
+        userRepository.delete(user);
+
         markRepository.delete(target);
         return MarkDto.createMarkDto(target);
     }
