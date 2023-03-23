@@ -1,36 +1,35 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.UserDto;
+import com.example.demo.dto.CorporateDto;
+import com.example.demo.entity.Corporate;
 import com.example.demo.entity.Mark;
-import com.example.demo.entity.User;
+import com.example.demo.repository.CorporateRepository;
 import com.example.demo.repository.MarkRepository;
-import com.example.demo.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class UserService {
+public class CorporateService {
     @Autowired
-    private UserRepository userRepository;
+    private CorporateRepository corporateRepository;
     @Autowired
     private MarkRepository markRepository;
 
-    public List<UserDto> user() {
-        return userRepository.findAll().stream()
-                .map(UserDto::createUserDto)
+    public List<CorporateDto> corporate() {
+        return corporateRepository.findAll().stream()
+                .map(CorporateDto::createCorporateDto)
                 .collect(Collectors.toList());
     }
     @Transactional
-    public UserDto create(Long mid, UserDto dto) {
+    public CorporateDto create(Long mid, CorporateDto dto) {
         Mark mark = markRepository.findById(mid).orElseThrow(() -> new IllegalArgumentException("error"));
-        User user = User.createUser(dto, mark);
-        User created = userRepository.save(user);
-        return UserDto.createUserDto(created);
+        Corporate corporate = Corporate.createCorporate(dto, mark);
+        Corporate created = corporateRepository.save(corporate);
+        return CorporateDto.createCorporateDto(created);
     }
 }

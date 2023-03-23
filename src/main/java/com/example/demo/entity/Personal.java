@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import com.example.demo.dto.PersonalDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ public class Personal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mid")
     private Mark mark;
     @Column
@@ -36,6 +37,7 @@ public class Personal {
     @Column
     @Size(max=128)
     @NotNull
+    @Email
     private String email;
     @Column
     @Size(max=64)
@@ -78,26 +80,26 @@ public class Personal {
                 .build();
     }
 
-    public void patch(Personal personal) {
-        if(personal.name_kor != null)
+    public void patch(PersonalDto personal) {
+        if(personal.getName_kor() != null)
             this.name_kor = personal.getName_kor();
-        if(personal.name_eng != null)
+        if(personal.getName_eng() != null)
             this.name_eng = personal.getName_eng();
-        if(personal.ssn != null)
+        if(personal.getSsn() != null)
             this.ssn = personal.getSsn();
-        if(personal.email != null)
+        if(personal.getEmail() != null)
             this.email = personal.getEmail();
-        if(personal.mobile != null)
+        if(personal.getMobile() != null)
             this.mobile = personal.getMobile();
-        if(personal.phone != null)
+        if(personal.getPhone() != null)
             this.phone = personal.getPhone();
-        if(personal.address != null)
+        if(personal.getAddress() != null)
             this.address = personal.getAddress();
-        if(personal.detail != null)
+        if(personal.getDetail() != null)
             this.detail = personal.getDetail();
-        if(personal.zipcode != null)
+        if(personal.getZipcode() != null)
             this.zipcode = personal.getZipcode();
-        if(personal.agreement != null)
+        if(personal.getAddress() != null)
             this.agreement = personal.getAgreement();
     }
 }

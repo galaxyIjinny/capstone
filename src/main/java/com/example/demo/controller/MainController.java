@@ -1,12 +1,15 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.*;
-import com.example.demo.entity.Mark;
-import com.example.demo.repository.MarkRepository;
-import com.example.demo.service.*;
+import com.example.demo.dto.CorporateDto;
+import com.example.demo.dto.MarkDto;
+import com.example.demo.dto.PersonalDto;
+import com.example.demo.dto.UserDto;
+import com.example.demo.service.CorporateService;
+import com.example.demo.service.MarkService;
+import com.example.demo.service.PersonalService;
+import com.example.demo.service.RegisterService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,37 +24,31 @@ public class MainController {
     @Autowired
     private CorporateService corporateService;
     @Autowired
-    private UserService userService;
-    @Autowired
     private RegisterService registerService;
-
     @GetMapping("/register")
     public List<MarkDto> showMarks() {
-        return markService.mark();
+        return markService.marks();
     }
-
-/*    @GetMapping("/personal")
+    @GetMapping("/personal")
     public List<PersonalDto> showPersonals() {
         return personalService.personal();
     }
-
     @GetMapping("/corporate")
     public List<CorporateDto> showCorporates() {
         return corporateService.corporate();
-    }*/
-
-    /*@GetMapping("/register")
-    public List<RegisterDto> showRegister() {
-        return registerService.register();
-    }*/
-
+    }
     @GetMapping("/user")
     public List<UserDto> showUsers() {
         return userService.user();
     }
 
 
-/*    @GetMapping("/main") // 메인 페이지
+
+
+
+
+
+    /*@GetMapping("/main") // 메인 페이지
     public String markMain() {
         return "/main";
     }

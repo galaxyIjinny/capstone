@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import com.example.demo.dto.UserDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mid")
     private Mark mark;
     @Column
@@ -33,6 +34,7 @@ public class User {
     @Column
     @Size(max=128)
     @NotNull
+    @Email
     private String email;
     @Column
     @Size(max=64)
@@ -49,16 +51,16 @@ public class User {
     @CreatedDate
     private LocalDateTime created_at;
 
-    public void patch(User user) {
-        if(user.name != null)
+    public void patch(UserDto user) {
+        if(user.getName() != null)
             this.name = user.getName();
-        if(user.email != null)
+        if(user.getEmail() != null)
             this.email = user.getEmail();
-        if(user.mobile != null)
+        if(user.getMobile() != null)
             this.mobile = user.getMobile();
-        if(user.phone != null)
+        if(user.getPhone() != null)
             this.phone = user.getPhone();
-        if(user.acc_num != null)
+        if(user.getAcc_num() != null)
             this.acc_num = user.getAcc_num();
     }
 

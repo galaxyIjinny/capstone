@@ -22,7 +22,7 @@ public class RegisterController {
     @Autowired
     private UserService userService;
 
-    /*@PostMapping("/personal")
+    @PostMapping("/personal")
     public ResponseEntity<RegisterDto> createPersonal(@RequestBody RegisterDto dto) {
         MarkDto mark = markService.create(dto.getMark());
         PersonalDto personal = personalService.create(mark.getId(), dto.getPersonal());
@@ -48,9 +48,9 @@ public class RegisterController {
                 .user(user)
                 .build();
         return ResponseEntity.status(HttpStatus.OK).body(registerDto);
-    }*/
+    }
 
-    @PostMapping("/register/complete")
+    /*@PostMapping("/register/complete")
     public ResponseEntity<RegisterDto> createComplete(@RequestBody RegisterDto dto, @RequestParam("applicantType") String applicantType) {
         MarkDto mark = markService.create(dto.getMark());
         UserDto user = userService.create(mark.getId(), dto.getUser());
@@ -73,5 +73,5 @@ public class RegisterController {
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(registerDto);
-    }
+    }*/
 }
