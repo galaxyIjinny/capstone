@@ -21,17 +21,39 @@ public class PersonalServiceImpl implements PersonalService {
     @Autowired
     private MarkRepository markRepository;
 
+    @Override
     public List<PersonalDto> personal() {
         return personalRepository.findAll().stream()
                 .map(PersonalDto::createPersonalDto)
                 .collect(Collectors.toList());
     }
+
     @Transactional
+    @Override
     public PersonalDto create(Long mid, PersonalDto dto) {
         Mark mark = markRepository.findById(mid)
                 .orElseThrow(() -> new IllegalArgumentException("error"));
         Personal personal = Personal.createPersonal(dto, mark);
         Personal created = personalRepository.save(personal);
         return PersonalDto.createPersonalDto(created);
+    }
+
+    @Transactional
+    @Override
+    public PersonalDto update(Long id, PersonalDto dto) {
+        Personal target = personalRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
+        target.patch(dto);
+        Personal updated = personalRepository.save(target);
+        return PersonalDto.createPersonalDto(updated);
+    }
+
+    @Transactional
+    @Override
+    public PersonalDto delete(Long id) {
+        Personal target = personalRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
+        personalRepository.delete(target);
+        return PersonalDto.createPersonalDto(target);
     }
 }

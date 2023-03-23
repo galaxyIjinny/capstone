@@ -21,11 +21,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private MarkRepository markRepository;
 
+    @Override
     public List<UserDto> user() {
         return userRepository.findAll().stream()
                 .map(UserDto::createUserDto)
                 .collect(Collectors.toList());
     }
+    @Override
     @Transactional
     public UserDto create(Long mid, UserDto dto) {
         Mark mark = markRepository.findById(mid)
@@ -33,5 +35,22 @@ public class UserServiceImpl implements UserService {
         User user = User.createUser(dto, mark);
         User created = userRepository.save(user);
         return UserDto.createUserDto(created);
+    }
+
+    @Override
+    public UserDto update(Long id, UserDto dto) {
+        User target = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
+        target.patch(dto);
+        User updated = userRepository.save(target);
+        return UserDto.createUserDto(updated);
+    }
+
+    @Override
+    public UserDto delete(Long id) {
+        User target = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("error"));
+        userRepository.delete(target);
+        return UserDto.createUserDto(target);
     }
 }

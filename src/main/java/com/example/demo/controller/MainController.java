@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.service.corporate.CorporateServiceImpl;
+import com.example.demo.service.info.InfoServiceImpl;
 import com.example.demo.service.mark.MarkServiceImpl;
 import com.example.demo.service.personal.PersonalServiceImpl;
 import com.example.demo.service.user.UserServiceImpl;
@@ -15,6 +16,8 @@ import java.util.List;
 @RequestMapping("/api/main")
 public class MainController {
     @Autowired
+    private InfoServiceImpl infoService;
+    @Autowired
     private MarkServiceImpl markService;
     @Autowired
     private PersonalServiceImpl personalService;
@@ -25,53 +28,7 @@ public class MainController {
 
     @GetMapping("/info")
     public List<InfoDto> showAllInfo() {
-        List<PersonalDto> personalDtoList = personalService.personal();
-        List<CorporateDto> corporateDtoList = corporateService.corporate();
-        List<UserDto> userDtoList = userService.user();
-        List<InfoDto> infoDtoList = new ArrayList<>();
-
-        for (UserDto userDto : userDtoList) {
-            MarkDto mark = markService.mark(userDto.getMid());
-            CorporateDto corporate = null;
-            PersonalDto personal = null;
-
-            if(mark.getPoc().equals("corporate")) {
-                for (CorporateDto corporateDto : corporateDtoList) {
-                    if (corporateDto.getMid() == mark.getId()) {
-                        corporate = corporateDto;
-                        break;
-                    }
-                }
-
-                InfoDto infoDto = InfoDto.builder()
-                        .mark(mark)
-                        .corporate(corporate)
-                        .user(userDto)
-                        .build();
-
-                infoDtoList.add(infoDto);
-            }
-
-            else if(mark.getPoc().equals("personal")) {
-                for (PersonalDto personalDto : personalDtoList) {
-                    if (personalDto.getMid() == mark.getId()) {
-                        personal = personalDto;
-                        break;
-                    }
-                }
-
-                InfoDto infoDto = InfoDto.builder()
-                        .mark(mark)
-                        .personal(personal)
-                        .user(userDto)
-                        .build();
-
-                infoDtoList.add(infoDto);
-            }
-
-        }
-
-        return infoDtoList;
+        return infoService.info();
     }
     @GetMapping("/mark")
     public List<MarkDto> showMarks() {
