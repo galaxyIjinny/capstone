@@ -1,0 +1,25 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+@RequestMapping("/admin")
+@RestController
+public class AdminController {
+    @Autowired
+
+    @PatchMapping("/admin/cost/{id}")
+    public ResponseEntity<Cost> update(MultipartFile file) {
+
+        String contentType = file.getContentType();
+
+        CostDto costDto = costService.update();
+        if(costDto != null)
+            return ResponseEntity.status(HttpStatus.OK).body(costDto);
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+}

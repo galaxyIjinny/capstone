@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.*;
 import com.example.demo.entity.Mark;
 import com.example.demo.repository.MarkRepository;
-import com.example.demo.service.CorporateService;
-import com.example.demo.service.MarkService;
-import com.example.demo.service.PersonalService;
-import com.example.demo.service.UserService;
+import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +22,10 @@ public class MainController {
     private CorporateService corporateService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private RegisterService registerService;
 
-    @GetMapping("/mark")
+    @GetMapping("/register")
     public List<MarkDto> showMarks() {
         return markService.mark();
     }
@@ -41,10 +40,10 @@ public class MainController {
         return corporateService.corporate();
     }*/
 
-    @GetMapping("/register")
+    /*@GetMapping("/register")
     public List<RegisterDto> showRegister() {
         return registerService.register();
-    }
+    }*/
 
     @GetMapping("/user")
     public List<UserDto> showUsers() {
