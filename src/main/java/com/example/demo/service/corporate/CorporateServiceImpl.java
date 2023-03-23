@@ -39,6 +39,7 @@ public class CorporateServiceImpl implements CorporateService {
     }
 
     @Override
+    @Transactional
     public CorporateDto update(Long id, CorporateDto dto) {
         Corporate target = corporateRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("error"));
@@ -48,6 +49,7 @@ public class CorporateServiceImpl implements CorporateService {
     }
 
     @Override
+    @Transactional
     public CorporateDto delete(Long id) {
         Corporate target = corporateRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("error"));
