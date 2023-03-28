@@ -16,7 +16,7 @@ import data from "./data";
 import './DomesticMark.css';
 
 
-function MarkAreaCard(props) { //1.상표유형 카드 
+function MarkAreaCard(props) { //상표유형 카드 컴포넌트
   return (
     <Card sx={{ minWidth: 250, minHeight:380 }}>
       <CardActionArea>
@@ -42,39 +42,46 @@ function MarkAreaCard(props) { //1.상표유형 카드
   );
 }
 
+function NationSelect(){ //국가선택 컴포넌트
+  return(
+  <div>
+  <br/><br/><br/>
+  <Container>
+  <div className="littleTitle" style={{color:"black"}}>04. 출원할 국가를 선택해주세요.</div>
+  <div className="littleInfo">다중선택이 가능합니다.</div>
+  <TextField id="standard-basic" label="국가명" variant="standard" sx={{width:"400px", maxWidth: '100%'}} />
+  <Button className="nationButton" variant="outlined">검색</Button>
+  <Button className="nationButton" variant="outlined">국가선택</Button>
+  </Container>
+  </div>
+  );
+}
 
-
+function MarkSelect(){ //상표패키지선택 컴포넌트
+let [markData] = useState(data)
+return(
+  <div className="markType">
+  <br/><br/><br/>
+  <Container>
+  <div className="littleTitle">01. 상표유형을 선택해주세요.</div>
+  <Grid container spacing={3} style={{textAlign:'center', margin:"30px 0 0 0"}}>        
+    <Grid item xs={4}> <MarkAreaCard markData={markData[0]}/> </Grid>
+    <Grid item xs={4}> <MarkAreaCard markData={markData[1]}/> </Grid>
+    <Grid item xs={4}> <MarkAreaCard markData={markData[2]}/> </Grid> 
+  </Grid>                        
+  </Container>
+</div>
+)
+}
 
 function DomesticMark(){
-  let [markData] = useState(data)
 
 
   return(
     <div className="markPage">
       <Navbar />
-
-      <div className="markType">
-        <br/><br/><br/>
-        <Container>
-        <div className="littleTitle">01. 상표유형을 선택해주세요.</div>
-        <Grid container spacing={3} style={{textAlign:'center', margin:"30px 0 0 0"}}>        
-          <Grid item xs={4}> <MarkAreaCard markData={markData[0]}/> </Grid>
-          <Grid item xs={4}> <MarkAreaCard markData={markData[1]}/> </Grid>
-          <Grid item xs={4}> <MarkAreaCard markData={markData[2]}/> </Grid> 
-        </Grid>                        
-        </Container>
-      </div>
-
-        <div className="nationSelect">
-        <br/><br/><br/>
-        <Container>
-        <div className="littleTitle" style={{color:"black"}}>04. 출원할 국가를 선택해주세요.</div>
-        <div className="littleInfo">다중선택이 가능합니다.</div>
-        <TextField id="standard-basic" label="국가명" variant="standard" sx={{width:"400px", maxWidth: '100%'}} />
-        <Button className="nationButton" variant="outlined">검색</Button>
-        <Button className="nationButton" variant="outlined">국가선택</Button>
-        </Container>
-        </div>
+      <MarkSelect/>
+      <NationSelect/>
     </div>
   )
 }
