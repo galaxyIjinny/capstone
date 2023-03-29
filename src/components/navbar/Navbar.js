@@ -141,7 +141,7 @@ const Navbar = () => {
             <NavLink>절차안내</NavLink>
             <NavLink>회사소개</NavLink>
             <NavLink to="/review">등록후기</NavLink>
-            <NavLink>고객문의</NavLink>
+            <NavLink to="/faq">FAQ</NavLink>
           </NavbarLinksBox>
         </Box>
       </Box>
