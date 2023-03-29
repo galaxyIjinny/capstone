@@ -153,7 +153,7 @@ const Navbar = () => {
           gaps: "1rem",
         }}
       >
-        <ButtonLink>상표등록 신청하기</ButtonLink>
+        <ButtonLink to="/domesticmark">상표등록 신청하기</ButtonLink>
         <CustomMenuIcon onClick={toggleDrawer(true)} />
         <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
           {list("right")}

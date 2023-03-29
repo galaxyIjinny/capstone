@@ -7,12 +7,13 @@ import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import './Price.css';
 import { ReactComponent as CheckIcon } from "../../assets/images/icon/iconCheck.svg";
-import priceBackground from "../../assets/images/비용안내.jpeg";
+import Navbar from "../../components/navbar/Navbar";
 
 function Price() {
   let [title] = useState(["국내출원 상표등록", "해외출원 상표등록", "국내+해외출원 상표등록"]);
   return (
     <div className="priceInfo">
+      <Navbar />
       <br/><br/><br/>
       <div className="priceTitle">비용안내</div>
       <Container>
