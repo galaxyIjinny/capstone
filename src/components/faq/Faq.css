@@ -6,7 +6,6 @@
   }
   
   .faq::before{
-    background-image: url("../../assets/images/비용안내.jpeg");
     opacity: 0.5;
     content: "";
     position: absolute;

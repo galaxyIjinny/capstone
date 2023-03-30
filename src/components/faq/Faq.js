@@ -28,14 +28,19 @@ const faqData = [
     answer: "Answer5"
   },
   {
-    question: "환불 해주세요",
+    question: "마드리드가 뭐에요",
     answer: "Answer6"
+  },
+  {
+    question: "환불 해주세요",
+    answer: "Answer7"
   }
 ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: '70%',
+    margin: '0 auto',
   },
   accordion: {
     '&:not(:last-child)': {
@@ -72,6 +77,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '10px',
     padding: theme.spacing(2),
   },
+  question: {
+    fontWeight: "bold",
+    fontSize: "1.2rem",
+    fontFamily: "Arial",
+  },
+  answer: {
+    fontSize: "1rem",
+    fontFamily: "Arial",
+  }
 }));
 
 const Faq = () => {
@@ -84,6 +98,7 @@ const Faq = () => {
 
   return (
     <div className="faq">
+      <div className={classes.root}>
     <Navbar />
     <br/><br/><br/><br/><br/>      
     <div className="faqTitle">FAQ</div>
@@ -103,13 +118,14 @@ const Faq = () => {
             expandIcon={<ExpandMoreIcon />}
             aria-controls={`panel${index}-content`}
             id={`panel${index}-header`}>
-            <Typography variant="h6">Q. {faq.question}</Typography>
+            <Typography variant="h6" className={classes.question}>Q. {faq.question}</Typography>
           </AccordionSummary>
           <AccordionDetails >
-            <Typography>&nbsp;&nbsp;&nbsp;{faq.answer}</Typography>
+            <Typography className={classes.answer}>&nbsp;&nbsp;&nbsp;{faq.answer}</Typography>
           </AccordionDetails>
         </Accordion>
       ))}
+      </div>
       <Footer />
     </div>
   );
