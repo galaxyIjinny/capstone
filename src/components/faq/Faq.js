@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Navbar from "../../components/navbar/Navbar";
+import './Faq.css';
 
 const faqData = [
   {
@@ -38,17 +39,17 @@ const Faq = () => {
   };
 
   return (
-    <div>
+    <div className="faq">
     <Navbar />
-    <br/><br/><br/>    
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/>      
+    <div className="faqTitle">FAQ</div>
       {faqData.map((faq, index) => (
         <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="h6">{faq.question}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography variant="body1">{faq.answer}</Typography>
+            <Typography>{faq.answer}</Typography>
           </AccordionDetails>
         </Accordion>
       ))}
