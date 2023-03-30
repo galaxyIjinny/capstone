@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '70%',
     margin: '0 auto',
+    marginBottom: theme.spacing(15),
   },
   accordion: {
     '&:not(:last-child)': {
@@ -56,8 +57,7 @@ const useStyles = makeStyles((theme) => ({
   expanded: {},
   accordionSummary: {
     backgroundColor: '#F5F5F5',
-    borderRadius: '10px',
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(2),
     minHeight: 64,
     '&$expanded': {
       minHeight: 64,
@@ -74,7 +74,6 @@ const useStyles = makeStyles((theme) => ({
   },
   accordionDetails: {
     backgroundColor: '#F5F5F5',
-    borderRadius: '10px',
     padding: theme.spacing(2),
   },
   question: {
