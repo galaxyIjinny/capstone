@@ -17,6 +17,14 @@
     margin-bottom: 50px;
 }
 
+.contentName_row {
+    background-color: #3E3E3F;
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    color: "white";
+}
+
 .nationButton{
     font-size: 16px;
     font-weight: 400;
