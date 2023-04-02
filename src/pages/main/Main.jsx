@@ -5,6 +5,7 @@ import mainImg from "../../assets/images/메인.jpeg";
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { styled } from "@mui/system";
+import Text from "../../utils/Test";
 const Main = () => {
   const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -56,8 +57,7 @@ const Main = () => {
   return (
     <BackgroundBox>
       <Container>
-        <Navbar />
-
+        <Navbar backgroundColor="transparent" borderBottom="none" />
         <CustomBox>
           <Box>
             <Title variant="h1">

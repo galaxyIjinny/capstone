@@ -5,9 +5,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-import Navbar from "../../components/navbar/Navbar";
 import "./Price.scss";
 import { ReactComponent as CheckIcon } from "../../assets/icon/iconCheck.svg";
+import Navbar from "../../components/navbar/Navbar";
 import priceBackground from "../../assets/images/비용안내.jpeg";
 
 function Price() {
@@ -18,6 +18,7 @@ function Price() {
   ]);
   return (
     <div className="priceInfo">
+      <Navbar backgroundColor="white" borderBottom="1px solid #eee" />
       <br />
       <br />
       <br />
