@@ -1,6 +1,6 @@
 import { ToggleButton, Tooltip } from "@mui/material";
 import { CustomTypo, FormContainer } from "./ClassificationFormStyle";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const classifications = [
   { id: 1, name: "1류", description: "화학제품, 비료, 코팅제, 비닐" },
