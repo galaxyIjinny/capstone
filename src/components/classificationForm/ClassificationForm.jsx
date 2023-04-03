@@ -1,9 +1,5 @@
-import { Tooltip, ToggleButtonGroup, ToggleButton } from "@mui/material";
-import {
-  CustomTypo,
-  FormContainer,
-  CustomToggleButton,
-} from "./ClassificationFormStyle";
+import { ToggleButton, Tooltip } from "@mui/material";
+import { CustomTypo, FormContainer } from "./ClassificationFormStyle";
 import React, { useState, useEffect } from "react";
 
 const classifications = [
@@ -183,35 +179,46 @@ const classifications = [
 const ClassificationForm = () => {
   const [selectedClassifications, setSelectedClassifications] = useState([]);
 
-  const handleClassificationsChange = (event, newSelectedClassifications) => {
-    setSelectedClassifications(newSelectedClassifications);
+  const handleClassificationClick = (classificationId) => {
+    if (selectedClassifications.includes(classificationId)) {
+      setSelectedClassifications(
+        selectedClassifications.filter((id) => id !== classificationId)
+      );
+    } else {
+      setSelectedClassifications([
+        ...selectedClassifications,
+        classificationId,
+      ]);
+    }
   };
-  // useEffect(() => {
-  //   console.log(selectedClassifications);
-  // }, [selectedClassifications]);
 
   return (
     <FormContainer>
       <CustomTypo sx={{ mb: "3rem" }}>03. 분류를 선택해주세요</CustomTypo>
-      <ToggleButtonGroup
-        value={selectedClassifications}
-        onChange={handleClassificationsChange}
-        sx={{ display: "flex", flexWrap: "wrap" }}
+      <div
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
         {classifications.map((classification) => (
           <Tooltip key={classification.id} title={classification.description}>
-            <CustomToggleButton
+            <ToggleButton
               value={classification.id}
-              selected={
-                selectedClassifications.indexOf(classification.id) !== -1
-              }
-              sx={{ border: "1px solid black" }}
+              selected={selectedClassifications.includes(classification.id)}
+              onClick={() => handleClassificationClick(classification.id)}
+              sx={{
+                border: "1px solid black",
+                color: "black",
+                fontFamily: "Pretendard",
+                width: "7rem",
+                margin: "0.8rem 0.5rem",
+                borderRadius: "0px",
+                fontSize: "18px",
+              }}
             >
               {classification.name}
-            </CustomToggleButton>
+            </ToggleButton>
           </Tooltip>
         ))}
-      </ToggleButtonGroup>
+      </div>
     </FormContainer>
   );
 };
