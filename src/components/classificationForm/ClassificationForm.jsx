@@ -204,14 +204,27 @@ const ClassificationForm = () => {
               value={classification.id}
               selected={selectedClassifications.includes(classification.id)}
               onClick={() => handleClassificationClick(classification.id)}
-              sx={{
-                border: "1px solid black",
-                color: "black",
+              style={{
+                border: "1px solid",
+                borderColor: selectedClassifications.includes(classification.id)
+                  ? "#3E3E3F"
+                  : "black",
                 fontFamily: "Pretendard",
                 width: "7rem",
                 margin: "0.8rem 0.5rem",
                 borderRadius: "0px",
                 fontSize: "18px",
+                backgroundColor: selectedClassifications.includes(
+                  classification.id
+                )
+                  ? "#3E3E3F"
+                  : "white",
+                color: selectedClassifications.includes(classification.id)
+                  ? "white"
+                  : "black",
+                boxShadow: selectedClassifications.includes(classification.id)
+                  ? "2px 2px 4px rgba(0, 0, 0, 0.5)"
+                  : "none",
               }}
             >
               {classification.name}
