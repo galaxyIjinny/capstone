@@ -1,4 +1,4 @@
-let data = [
+let markType_data = [
     {
         id: 0,
         type: "국내출원",
@@ -20,4 +20,4 @@ let data = [
         price: "400,000"
     }
 ]
-export default data;
+export default markType_data;

@@ -3,6 +3,8 @@ import Modal from '@mui/material/Modal';
 import {Table, TableBody, TableCell, TableContainer, TableRow} from '@mui/material';
 import { Container, fontSize, margin } from '@mui/system';
 import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField';
 import { Avatar } from '@mui/material'; 
 import Button from '@mui/material/Button';
@@ -14,7 +16,7 @@ import { CardActionArea } from '@mui/material';
 import { useState } from 'react';
 import box_icon from "../../assets/images/icon/box.png";
 import Navbar from '../navbar/Navbar';
-import data from "./data";
+import markType_data from "./data"; //상표유형 데이터
 import "./DomesticMark.css";
 
 function MarkAreaCard(props) { //상표유형 카드 컴포넌트
@@ -44,7 +46,7 @@ function MarkAreaCard(props) { //상표유형 카드 컴포넌트
 }
 
 function MarkSelect(){ //상표패키지선택 컴포넌트
-let [markData] = useState(data)
+let [markData] = useState(markType_data)
 return(
   <div className="markType">
   <br/><br/><br/>
@@ -70,16 +72,32 @@ return(
 
 function NationSelect() { //국가선택 컴포넌트
   const [open, setOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState(''); // 입력어를 state로 관리
+  const [boxes, setBoxes] = useState([]);
 
-  const handleOpen = () => {
+  const handleOpen = () => { //모달창 오픈
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = () => { //모달창 닫기
     setOpen(false);
   };
 
-  const handleSelectCountry = () => {
+  const handleSearch = () => { // 검색 버튼 클릭 시 검색어에 해당하는 박스 추가 로직
+    const newBox = 
+    <Box className="nationBox_selected"> {searchValue} 
+    <IconButton onClick={handleClose}><CloseIcon /></IconButton>
+    </Box>;
+    setBoxes([...boxes, newBox]);
+    console.log(searchValue);
+  };
+
+  const handleInput = (event) => {
+    // TextField에 입력된 값을 검색어 state에 저장
+    setSearchValue(event.target.value);
+  };
+
+  const handleSelectCountry = () => { //국가선택팝업창에서 국가 버튼을 눌렀을 때 
     
   }
   return (
@@ -88,38 +106,49 @@ function NationSelect() { //국가선택 컴포넌트
       <Container>
         <div className="littleTitle" style={{color:"black"}}>04. 출원할 국가를 선택해주세요.</div>
         <div className="littleInfo">다중선택이 가능합니다.</div>
-        <TextField id="standard-basic" label="국가명" variant="standard" sx={{width:"400px", maxWidth: '100%'}} />
-        <Button className="nationButton" variant="outlined">검색</Button>
+        <TextField id="standard-basic" label="국가명" variant="standard" style={{width:'400px', maxWidth: '100%'}}
+         value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
+        <Button className="nationButton" variant="outlined" onClick={handleSearch}>검색</Button>
         <Button className="nationButton" variant="outlined" onClick={handleOpen}>
         국가선택
       </Button>
+      <div>{boxes}</div>
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
+        aria-labelledby="국가선택창"
+        aria-describedby="다중선택이 가능합니다. 스크롤해서 선택해주세요."
       >
         <Box sx={{
           position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          bgcolor: 'background.paper',
-          border: '2px solid #000',
-          boxShadow: 24,
+          bgcolor: 'white',
+          border: '1px solid #000',
+          boxShadow: 18,
           p: 8,
-          overflow: 'scroll',  // 스크롤을 추가할 수 있도록 `overflow` 속성을 설정
-          maxHeight: '80vh',   // 모달 창 내부의 높이가 충분하도록 `maxHeight` 속성을 설정
+          overflow: 'auto',
+          maxHeight: '80vh',   
         }}>
+          <Box sx={{
+            position: 'absolute',
+            top: '5px',
+            right: '5px',
+          }}>
+          <IconButton onClick={handleClose}>
+            <CloseIcon />
+          </IconButton>
+          </Box>
           <h2 id="modal-title">국가 선택</h2>
-          <p id="modal-description">다중선택이 가능합니다.</p>
+          <p id="modal-description">다중선택이 가능하며 스크롤해서 선택해주세요.</p>
           <TableContainer style={{ width: '800px', height: '800px' }}> 
             <Table style={{ width: '100%', height: '100%' }}>
               <TableBody>
                 {[...Array(20)].map((_, i) => (
                   <TableRow key={i}>
                 {i === 0 && (
-                  <TableCell className="contentName_row" rowSpan={2} sx={{color:"white"}}> 주요국가 </TableCell>
+                  <TableCell className="contentName_row" rowSpan={2} style={{color:"white"}}> 주요국가 </TableCell>
                 )}
                 {i === 2 && (
                   <TableCell className="contentName_row" rowSpan={5}> 아시아 </TableCell>
@@ -136,9 +165,9 @@ function NationSelect() { //국가선택 컴포넌트
                 {i === 16 && (
                   <TableCell className="contentName_row" rowSpan={4}> 아프리카 </TableCell>
                 )}
-                    {[...Array(6)].map((_, j) => (                      
+                    {[...Array(5)].map((_, j) => (                      
                       <TableCell key={`${i}-${j}`}>
-                        <Button variant="outlined" color="primary" onClick={() => handleSelectCountry(i, j)}>선택</Button>
+                        <Button className='nationButton_table' variant="outlined" color="primary" onClick={() => handleSelectCountry(i, j)}>선택</Button>
                       </TableCell>
                     ))}
                   </TableRow>
@@ -146,7 +175,10 @@ function NationSelect() { //국가선택 컴포넌트
               </TableBody>
             </Table>
           </TableContainer>
-          <Button onClick={handleClose}>닫기</Button>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '25px' }}>
+          <Button className='confireButton_table' variant="outlined" onClick={handleClose} style={{marginRight:'30px', backgroundColor:'#CBA585', color:'white'}}>확인</Button>
+          <Button className='confireButton_table' variant="outlined" onClick={handleClose} style={{marginLeft:'30px'}}>취소</Button>
+          </div>
         </Box>
       </Modal>
       </Container>
