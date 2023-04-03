@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { useState } from 'react';
 import box_icon from "../../assets/images/icon/box.png";
-import Navbar from '../navbar/Navbar';
+import Navbar from '../../components/navbar/Navbar';
 import markType_data from "./data"; //상표유형 데이터
 import "./DomesticMark.css";
 

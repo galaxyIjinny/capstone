@@ -141,7 +141,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
               <NavLink to="/price">비용안내</NavLink>
               <NavLink>절차안내</NavLink>
               <NavLink>회사소개</NavLink>
-              <NavLink>고객문의</NavLink>
+              <NavLink to="/faq">고객문의</NavLink>
             </NavbarLinksBox>
           </Box>
         </Box>
@@ -153,7 +153,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
             gaps: "1rem",
           }}
         >
-          <ButtonLink to="/trademarkRegistration">상표등록 신청하기</ButtonLink>
+          <ButtonLink to="/domesticMark">상표등록 신청하기</ButtonLink>
           <CustomMenuIcon onClick={toggleDrawer(true)} />
           <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
             <List>
