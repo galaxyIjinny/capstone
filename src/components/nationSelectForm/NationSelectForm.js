@@ -1,18 +1,11 @@
-import Grid from '@mui/material/Grid';
 import Modal from '@mui/material/Modal';
 import {Table, TableBody, TableCell, TableContainer, TableRow} from '@mui/material';
 import { Container, fontSize, margin } from '@mui/system';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import TextField from '@mui/material/TextField';
-import { Avatar } from '@mui/material'; 
+import TextField from '@mui/material/TextField'; 
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
 import { useState } from 'react';
 import "./NationSelectForm.css";
 
