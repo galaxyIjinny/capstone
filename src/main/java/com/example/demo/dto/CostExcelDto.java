@@ -1,17 +1,16 @@
 package com.example.demo.dto;
 
+import com.example.demo.entity.CostExcel;
 import jakarta.persistence.Column;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class CostExcelDto {
-    private String GeneralCountry;
-    private Integer GeneralCost;
-    private String MadridCountry;
-    private Integer MadridCost;
-
+    private Long lineNumber;
     private String country;
 
     private Long directBasicCharge;
@@ -28,4 +27,11 @@ public class CostExcelDto {
     private Long basicCharge;
     private Long basicCHF;
     private Float exchangeRate;
+
+
+
+    public static CostExcelDto createCostExcelDto(CostExcel costExcel) {
+        return CostExcelDto.builder()
+                .build();
+    }
 }

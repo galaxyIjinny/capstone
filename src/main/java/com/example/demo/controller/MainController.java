@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.service.corporate.CorporateServiceImpl;
+import com.example.demo.service.excel.ExcelServiceImpl;
 import com.example.demo.service.info.InfoServiceImpl;
 import com.example.demo.service.mark.MarkServiceImpl;
 import com.example.demo.service.personal.PersonalServiceImpl;
@@ -25,8 +26,8 @@ public class MainController {
     @Autowired
     private UserServiceImpl userService;
 
-    /*@Autowired
-    private RegisterService registerService;*/
+    @Autowired
+    private ExcelServiceImpl excelService;
 
 
 
@@ -49,5 +50,10 @@ public class MainController {
     @GetMapping("/user")
     public List<UserDto> showUsers() {
         return userService.user();
+    }
+
+    @GetMapping("/excel")
+    public List<CostExcelDto> showExcels() {
+        return excelService.costExcels();
     }
 }
