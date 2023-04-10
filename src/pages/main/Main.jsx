@@ -2,13 +2,12 @@ import { CustomBox, Title, BackgroundBox, ButtonLink } from "./MainStyle";
 import { Box, Typography, Container } from "@mui/material";
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import DomesticMark from "../../pages/domesticMark/DomesticMark";
 
 const Main = () => {
   return (
     <BackgroundBox>
       <Container>
-        <Navbar backgroundColor="transparent" borderBottom="none" />
+        <Navbar backgroundColor="transparent" borderBottom={false} />
         <CustomBox>
           <Box>
             <Title variant="h1">
@@ -29,9 +28,7 @@ const Main = () => {
             >
               고민하지 말고 신청하세요!
             </Typography>
-            <ButtonLink to="/dosmesticMark">
-              상표등록 신청하기
-            </ButtonLink>
+            <ButtonLink to="/domesticMark">상표등록 신청하기</ButtonLink>
           </Box>
         </CustomBox>
       </Container>

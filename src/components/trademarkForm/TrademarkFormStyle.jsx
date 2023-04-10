@@ -21,7 +21,7 @@ export const Wrapper = styled("div")(({ theme }) => ({
   justifyContent: "space-between",
 }));
 
-export const Label = styled("label")({
+export const CustomLabel = styled("label")({
   fontFamily: "Pretendard",
   fontWeight: "600",
   fontSize: "25px",

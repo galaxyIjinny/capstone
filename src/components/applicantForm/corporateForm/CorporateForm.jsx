@@ -1,4 +1,4 @@
-import { TextField, Grid } from "@mui/material";
+import { TextField, Grid, Button } from "@mui/material";
 import { Wrapper, Label, CustomTypo } from "./CorporateFormStyle";
 import React from "react";
 import { useState } from "react";
@@ -65,7 +65,7 @@ const CorporateForm = () => {
   };
 
   return (
-    <>
+    <form>
       <Grid container spacing={2} sx={{ mb: "3rem", padding: "0 230px" }}>
         <Grid item xs={6}>
           <TextField
@@ -185,15 +185,43 @@ const CorporateForm = () => {
           type="file"
           onChange={handleSealImageChange}
         />
+        <label className="fileLabel" htmlFor="fileUpload">
+          파일 첨부
+        </label>
       </Wrapper>
-
       <Grid container spacing={1} sx={{ padding: "100px 230px" }}>
         <CustomTypo sx={{ mb: "3rem" }}>
           06. 법인 등본상 주소를 입력해주세요
         </CustomTypo>
-        <Grid item xs={12}></Grid>
+        <Grid item xs={8}>
+          <TextField
+            required
+            fullWidth
+            sx={{ mb: "3rem" }}
+            id="corporateAddress"
+            label="주소"
+            variant="standard"
+            // value={}
+            // onChange={}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <Button>주소검색</Button>
+        </Grid>
+        <Grid item xs={8}>
+          <TextField
+            required
+            fullWidth
+            sx={{ mb: "3rem" }}
+            id="corporateAddress"
+            label="상세주소"
+            variant="standard"
+            // value={}
+            // onChange={}
+          />
+        </Grid>
       </Grid>
-    </>
+    </form>
   );
 };
 export default CorporateForm;
