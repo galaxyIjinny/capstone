@@ -21,6 +21,12 @@ function MarkAreaCard(props) { //상표유형 카드 컴포넌트
     setIsSelected(!isSelected);
   };
 
+  useEffect(() => {
+    if (props.selectedMark !== props.markData.type) {
+      setIsSelected(false); // 선택된 카드가 아닐 때 상태 초기화
+    }
+  }, [props.selectedMark]);
+
   return (
     <Card sx={{ minWidth: 250, minHeight:380, alignItems: "center", 
     backgroundColor: isSelected ? "gray" : "white",}} >
@@ -67,10 +73,9 @@ return(
   <Container>
   <div className="littleTitle01">01. 상표유형을 선택해주세요.</div>
   <Grid container spacing={3} style={{textAlign:'center', margin:"30px 0 0 0"}}>        
-    <Grid item xs={4}> <MarkAreaCard markData={markData[0]} onClick={handleMarkClick}/> </Grid>
-    <Grid item xs={4}> <MarkAreaCard markData={markData[1]} onClick={handleMarkClick}/> </Grid>
-    <Grid item xs={4}> <MarkAreaCard markData={markData[2]} onClick={handleMarkClick}
- /> </Grid> 
+    <Grid item xs={4}> <MarkAreaCard markData={markData[0]} onClick={handleMarkClick} selectedMark={selectedMark}/> </Grid>
+    <Grid item xs={4}> <MarkAreaCard markData={markData[1]} onClick={handleMarkClick} selectedMark={selectedMark}/> </Grid>
+    <Grid item xs={4}> <MarkAreaCard markData={markData[2]} onClick={handleMarkClick} selectedMark={selectedMark}/> </Grid> 
   </Grid>                        
   </Container>
 
