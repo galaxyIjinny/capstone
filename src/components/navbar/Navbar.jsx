@@ -24,7 +24,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
     { text: "비용안내", link: "/price" },
     { text: "절차안내", link: "/procedure" },
     { text: "회사안내", link: "/about" },
-    { text: "고객문의", link: "/contact" },
+    { text: "고객문의", link: "/faq" },
   ];
 
   const NavLink = styled(Link)(({ theme }) => ({
@@ -61,7 +61,6 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
 
   const NavbarContainer = styled(Box)(({ theme }) => ({
     position: "fixed",
-    zIndex: "1",
     top: "0",
     left: "0",
     right: "0",
@@ -69,7 +68,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
     alignItems: "center",
     margin: "0 150px 0 150px",
     justifyContent: "space-between",
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     [theme.breakpoints.down("1080")]: {
       margin: "0",
     },
@@ -77,12 +76,12 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
 
   const NavbarWrapper = styled(Box)(({ theme }) => ({
     position: "fixed",
-    zIndex: "1",
+    zIndex: "100",
     top: "0",
     left: "0",
     right: "0",
     display: "flex",
-    height: "90px",
+    height: "80px",
     alignItems: "center",
     justifyContent: "space-between",
     padding: theme.spacing(2),
@@ -117,7 +116,8 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   return (
     <NavbarWrapper
       backgroundColor={backgroundColor}
-      borderBottom={borderBottom}
+      // borderBottom={borderBottom ? "1px solid #eee" : "none"}
+      // backgroundColor="white"
     >
       <NavbarContainer>
         <Box
