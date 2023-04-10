@@ -196,7 +196,7 @@ const ClassificationForm = () => {
     <FormContainer>
       <CustomTypo sx={{ mb: "3rem" }}>03. 분류를 선택해주세요</CustomTypo>
       <div
-        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}
       >
         {classifications.map((classification) => (
           <Tooltip key={classification.id} title={classification.description}>
