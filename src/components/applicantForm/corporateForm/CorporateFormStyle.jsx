@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Typography } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 
 export const Wrapper = styled("div")(({ theme }) => ({
   paddingLeft: "230px",
@@ -22,3 +22,5 @@ export const CustomTypo = styled(Typography)({
   fontWeight: "600",
   fontSize: "46px",
 });
+
+export const SearchButton = styled(Button)(({ theme }) => ({}));
