@@ -21,27 +21,14 @@ public class AdminController {
 
     @PatchMapping("/{id}/excel/upload")
     public ResponseEntity<CostExcelDto> update(HttpServletRequest request, HttpServletResponse response, MultipartFile file) {
+        /*String contentType = file.getContentType();
+        CostDto costDto = costService.update();*/
+
         return ResponseEntity.ok().body(excelService.update(file));
-        if (file != null)
-            return ResponseEntity.status(HttpStatus.OK).build()
+        /*if (file != null)
+            return ResponseEntity.status(HttpStatus.OK).build();
         else
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();*/
     }
 
-    @PostMapping("/selectedData")
-    public List<CostExcel> getSelectedUsers(@RequestBody List<Long> selected) {
-        return excelService.read(selected);
-    }
-
-    @PatchMapping("/{id}/excel")
-    public ResponseEntity<Cost> update(MultipartFile file) {
-
-        String contentType = file.getContentType();
-
-        CostDto costDto = costService.update();
-        if(costDto != null)
-            return ResponseEntity.status(HttpStatus.OK).body(costDto);
-        else
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-    }
 }

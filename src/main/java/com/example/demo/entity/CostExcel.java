@@ -28,7 +28,8 @@ public class CostExcel {
     private Long directBasicAddition;
     @Column
     private Long directLocalAddition;
-
+    @Column
+    private Long directSubtotal;
 
     // 마드리드
     @Column
@@ -39,8 +40,11 @@ public class CostExcel {
     private Long madridBasicAddition;
     @Column
     private Long madridCHFAddition;
+    @Column
+    private Long madridSubtotal;
 
-
+    @Column
+    private Long sum;
     @Column
     private Long basicCharge;
     @Column
