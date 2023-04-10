@@ -1,0 +1,23 @@
+input[type="file"] {
+  display: none;
+}
+
+.fileLabel {
+  display: flex;
+  color: black;
+  height: 45px;
+  width: 140px;
+  border: 1.5px solid #3e3e3f;
+  border-radius: 30px;
+  background-color: transparent;
+  font-family: "Pretendard";
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3e3e3f;
+    color: white;
+  }
+}

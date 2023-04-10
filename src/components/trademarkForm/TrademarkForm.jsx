@@ -1,10 +1,11 @@
 import { TextField, Grid } from "@mui/material";
 import React from "react";
+import "./TrademarkForm.scss";
 import {
   CustomTypo,
   FormContainer,
   Wrapper,
-  Label,
+  CustomLabel,
 } from "./TrademarkFormStyle";
 import { useState } from "react";
 const TrademarkForm = () => {
@@ -22,10 +23,11 @@ const TrademarkForm = () => {
 
   const handleTrademarkImageChange = (event) => {
     setTrademarkImage(event.target.files[0]);
+    // console.log(trademarkImage);
   };
 
   return (
-    <>
+    <form>
       <FormContainer>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -59,17 +61,18 @@ const TrademarkForm = () => {
         </Grid>
       </FormContainer>
       <Wrapper>
-        <Label htmlFor="trademarkImage">
-          상표이미지가 있다면 파일을 첨부해주세요
-        </Label>
+        <CustomLabel>상표이미지가 있다면 파일을 첨부해주세요</CustomLabel>
         <input
           accept="image/*"
-          id="trademarkImage"
+          id="fileUpload"
           type="file"
           onChange={handleTrademarkImageChange}
         />
+        <label className="fileLabel" htmlFor="fileUpload">
+          파일 첨부
+        </label>
       </Wrapper>
-    </>
+    </form>
   );
 };
 export default TrademarkForm;
