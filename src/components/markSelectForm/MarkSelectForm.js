@@ -69,8 +69,7 @@ let [markData] = useState(markType_data) //상표패키지 데이터
 
 return(
   <div className="markType">
-  <br/><br/><br/>
-  <Container>
+  <Container sx={{paddingTop:'100px'}}>
   <div className="littleTitle01">01. 상표유형을 선택해주세요.</div>
   <Grid container spacing={3} style={{textAlign:'center', margin:"30px 0 0 0"}}>        
     <Grid item xs={4}> <MarkAreaCard markData={markData[0]} onClick={handleMarkClick} selectedMark={selectedMark}/> </Grid>
