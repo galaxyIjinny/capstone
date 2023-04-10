@@ -47,19 +47,28 @@ function NationSelectForm() { //국가선택 컴포넌트
   const handleSelectCountry = () => { //국가선택팝업창에서 국가 버튼을 눌렀을 때 
     
   }
+
   return (
-    <div>
+    <div style={{margin: "100px 230px", flexWrap: "wrap", justifyContent: "center" }}>
       <br/><br/><br/>
       <Container>
-        <div className="littleTitle" style={{color:"black"}}>04. 출원할 국가를 선택해주세요.</div>
+        <div className="littleTitle02"style={{color:"black"}}>04. 출원할 국가를 선택해주세요.</div>
         <div className="littleInfo">다중선택이 가능합니다.</div>
         <TextField id="standard-basic" label="국가명" variant="standard" style={{width:'400px', maxWidth: '100%'}}
          value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
-        <Button className="nationButton" variant="outlined" onClick={handleSearch}>검색</Button>
-        <Button className="nationButton" variant="outlined" onClick={handleOpen}>
-        국가선택
-      </Button>
+
+        <Button className="nationButton" variant="outlined" onClick={handleSearch} sx={{
+          fontSize:'16px', fontWeight:'400', marginLeft:'30px',borderRadius:'50px',
+          backgroundColor:'transparent', color:'black', width:'120px', height:'48px',
+          padding:'8px 16px', border: '0.5px solid #2F2E41'}}>검색</Button>
+
+            <Button className="nationButton" variant="outlined" onClick={handleOpen} sx={{
+          fontSize:'16px', fontWeight:'400', marginLeft:'30px',borderRadius:'50px',
+          backgroundColor:'transparent', color:'black', width:'120px', height:'48px',
+          padding:'8px 16px', border: '0.5px solid #2F2E41'}}>국가선택</Button>
+
       <div>{boxes}</div>
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -91,30 +100,34 @@ function NationSelectForm() { //국가선택 컴포넌트
           <p id="modal-description">다중선택이 가능하며 스크롤해서 선택해주세요.</p>
           <TableContainer style={{ width: '800px', height: '800px' }}> 
             <Table style={{ width: '100%', height: '100%' }}>
-              <TableBody>
+              <TableBody sx={{overflow:'auto'}}>
                 {[...Array(20)].map((_, i) => (
                   <TableRow key={i}>
                 {i === 0 && (
-                  <TableCell className="contentName_row" rowSpan={2} style={{color:"white"}}> 주요국가 </TableCell>
+                  <TableCell className="contentName_row" rowSpan={2} style={{color:"white", fontSize:'20px', fontWeight:'400', textAlign:'center'}}> 주요국가 </TableCell>
                 )}
                 {i === 2 && (
-                  <TableCell className="contentName_row" rowSpan={5}> 아시아 </TableCell>
+                  <TableCell className="contentName_row" rowSpan={5} style={{color:"white", fontSize:'20px', fontWeight:'400', textAlign:'center'}}> 아시아 </TableCell>
                 )}
                  {i === 7 && (
-                  <TableCell className="contentName_row" rowSpan={1}> 북미 </TableCell>
+                  <TableCell className="contentName_row" rowSpan={1} style={{color:"white", fontSize:'20px', fontWeight:'400', textAlign:'center'}}> 북미 </TableCell>
                 )}
                  {i === 8 && (
-                  <TableCell className="contentName_row" rowSpan={4}> 남미 </TableCell>
+                  <TableCell className="contentName_row" rowSpan={4} style={{color:"white", fontSize:'20px', fontWeight:'400', textAlign:'center'}}> 남미 </TableCell>
                 )}
                  {i === 12 && (
-                  <TableCell className="contentName_row" rowSpan={4}> 유럽 </TableCell>
+                  <TableCell className="contentName_row" rowSpan={4} style={{color:"white", fontSize:'20px', fontWeight:'400', textAlign:'center'}}> 유럽 </TableCell>
                 )} 
                 {i === 16 && (
-                  <TableCell className="contentName_row" rowSpan={4}> 아프리카 </TableCell>
+                  <TableCell className="contentName_row" rowSpan={4} style={{color:"white", fontSize:'20px', fontWeight:'400', textAlign:'center'}}> 아프리카 </TableCell>
                 )}
                     {[...Array(5)].map((_, j) => (                      
                       <TableCell key={`${i}-${j}`}>
-                        <Button className='nationButton_table' variant="outlined" color="primary" onClick={() => handleSelectCountry(i, j)}>선택</Button>
+                        <Button className='nationButton_table' variant="outlined" color="primary" onClick={() => handleSelectCountry(i, j)} sx={{
+                          fontSize:'12px', fontWeight:'400px', marginLeft:'5px', borderRadius:'40px',
+                          borderRadius:'40px', border:'0.5px solid #2F2E41', backgroundColor:'transparent',
+                          color:'black', width:'100px', height:'35px', padding:'4px'
+                        }}>선택</Button>
                       </TableCell>
                     ))}
                   </TableRow>
@@ -122,9 +135,11 @@ function NationSelectForm() { //국가선택 컴포넌트
               </TableBody>
             </Table>
           </TableContainer>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '25px' }}>
-          <Button className='confireButton_table' variant="outlined" onClick={handleClose} style={{marginRight:'30px', backgroundColor:'#CBA585', color:'white'}}>확인</Button>
-          <Button className='confireButton_table' variant="outlined" onClick={handleClose} style={{marginLeft:'30px'}}>취소</Button>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '25px', marginLeft: '50px' }}>
+          <Button className='confireButton_table' variant="outlined" onClick={handleClose} style={{
+            marginRight:'30px', backgroundColor:'#CBA585', color:'white', border:'0.5px solid #CBA585', borderRadius:'50px', width:'120px', height:'48', padding:'8px 16px'}}>확인</Button>
+          <Button className='confireButton_table' variant="outlined" onClick={handleClose} style={{
+            marginRight:'30px', backgroundColor:'#FFFFFF', color:'#CBA585', border:'0.5px solid #CBA585', borderRadius:'50px', width:'120px', height:'48', padding:'8px 16px'}}>취소</Button>
           </div>
         </Box>
       </Modal>

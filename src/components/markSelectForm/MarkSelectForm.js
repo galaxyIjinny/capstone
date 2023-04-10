@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import Grid from '@mui/material/Grid';
 import { Container, fontSize, margin } from '@mui/system';
 import Card from '@mui/material/Card';
@@ -10,15 +11,29 @@ import box_icon from "../../assets/images/icon/box.png";
 import markType_data from "./data"; //상표유형 데이터
 import "./MarkSelectForm.css";
 
+
 function MarkAreaCard(props) { //상표유형 카드 컴포넌트
+  const [isSelected, setIsSelected] = useState(false); //카드가 선택됐는지 판단하는 state
+
+  const handleClick = () => { //카드의 패키지를 상태를 전달;
+    props.onClick(props.markData.type);
+    console.log(props.markData.type);
+    setIsSelected(!isSelected);
+  };
+
   return (
-    <Card sx={{ minWidth: 250, minHeight:380, alignItems: "center" }}>
-      <CardActionArea >
+    <Card sx={{ minWidth: 250, minHeight:380, alignItems: "center", 
+    backgroundColor: isSelected ? "gray" : "white",}} >
+      <CardActionArea onClick={handleClick}>
         <CardMedia
           component="img"
           image={ box_icon }
           alt="package picture"
-          sx={{ width: 100, height: 100, objectFit: "cover", marginLeft: "127px", marginTop: "50px" }}
+          sx={{ 
+          width: 100, height: 100, 
+          objectFit: "cover", 
+          marginLeft: "127px", marginTop: "50px"
+         }}
         />
         <CardContent sx={{height:300}}>
           <Typography gutterBottom variant="h5" fontWeight={500} component="div">
@@ -37,18 +52,30 @@ function MarkAreaCard(props) { //상표유형 카드 컴포넌트
 }
 
 function MarkSelectForm(){ //상표패키지선택 컴포넌트
-let [markData] = useState(markType_data)
+
+const [selectedMark, setSelectedMark] = useState("국내출원");
+
+const handleMarkClick = (type) => { //패키지 타입,인덱스 상태 저장
+    setSelectedMark(type);
+  };
+
+let [markData] = useState(markType_data) //상표패키지 데이터
+
 return(
   <div className="markType">
   <br/><br/><br/>
   <Container>
-  <div className="littleTitle">01. 상표유형을 선택해주세요.</div>
+  <div className="littleTitle01">01. 상표유형을 선택해주세요.</div>
   <Grid container spacing={3} style={{textAlign:'center', margin:"30px 0 0 0"}}>        
-    <Grid item xs={4}> <MarkAreaCard markData={markData[0]}/> </Grid>
-    <Grid item xs={4}> <MarkAreaCard markData={markData[1]}/> </Grid>
-    <Grid item xs={4}> <MarkAreaCard markData={markData[2]}/> </Grid> 
+    <Grid item xs={4}> <MarkAreaCard markData={markData[0]} onClick={handleMarkClick}/> </Grid>
+    <Grid item xs={4}> <MarkAreaCard markData={markData[1]} onClick={handleMarkClick}/> </Grid>
+    <Grid item xs={4}> <MarkAreaCard markData={markData[2]} onClick={handleMarkClick}
+ /> </Grid> 
   </Grid>                        
   </Container>
+
+  {selectedMark === "국내출원" ? <div>국내랜더링</div> : <div>해외랜더링</div>}
+
 </div>
 );
 }

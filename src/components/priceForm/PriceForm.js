@@ -12,6 +12,7 @@ function PriceForm() {
   let [title] = useState(["국내출원 상표등록", "해외출원 상표등록", "국내+해외출원 상표등록"]);
   return (
     <div className="priceInfo">
+      <br/>
       <div className="priceTitle">비용안내</div>
       <Container>
         <Grid container spacing={3}>
