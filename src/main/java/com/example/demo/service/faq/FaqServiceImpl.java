@@ -4,18 +4,18 @@ import com.example.demo.dto.FaqDto;
 import com.example.demo.entity.Faq;
 import com.example.demo.repository.FaqRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class FaqServiceImpl implements  FaqService {
-    @Autowired
-    private FaqRepository faqRepository;
+    private final FaqRepository faqRepository;
 
     @Override
     public List<FaqDto> faq() {

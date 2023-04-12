@@ -1,8 +1,6 @@
 package com.example.demo.admin.entity;
 
 import com.example.demo.admin.dto.AdminDto;
-import com.example.demo.dto.FaqDto;
-import com.example.demo.entity.Faq;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;

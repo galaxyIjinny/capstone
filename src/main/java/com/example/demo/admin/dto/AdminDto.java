@@ -1,7 +1,5 @@
 package com.example.demo.admin.dto;
 
-import com.example.demo.dto.FaqDto;
-import com.example.demo.entity.Faq;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

@@ -2,16 +2,16 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.service.info.InfoServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/register")
 public class RegisterController {
-    @Autowired
-    private InfoServiceImpl infoService;
+    private final InfoServiceImpl infoService;
 
     @PostMapping("/personal")
     public ResponseEntity<InfoDto> createPersonal(@RequestBody InfoDto dto) {

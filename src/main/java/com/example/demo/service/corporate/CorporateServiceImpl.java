@@ -6,8 +6,8 @@ import com.example.demo.entity.Mark;
 import com.example.demo.repository.CorporateRepository;
 import com.example.demo.repository.MarkRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +15,10 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class CorporateServiceImpl implements CorporateService {
-    @Autowired
-    private CorporateRepository corporateRepository;
-    @Autowired
-    private MarkRepository markRepository;
+    private final CorporateRepository corporateRepository;
+    private final MarkRepository markRepository;
 
     @Override
     public List<CorporateDto> corporate() {

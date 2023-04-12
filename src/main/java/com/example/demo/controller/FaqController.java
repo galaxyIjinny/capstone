@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.FaqDto;
 import com.example.demo.service.faq.FaqServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/faq")
 public class FaqController {
-    @Autowired
-    private FaqServiceImpl faqService;
+    private final FaqServiceImpl faqService;
 
     @GetMapping
     public List<FaqDto> showFaqs() {

@@ -10,8 +10,8 @@ import com.example.demo.repository.MarkRepository;
 import com.example.demo.repository.PersonalRepository;
 import com.example.demo.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,15 +19,12 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class MarkServiceImpl implements MarkService {
-    @Autowired
-    private MarkRepository markRepository;
-    @Autowired
-    private CorporateRepository corporateRepository;
-    @Autowired
-    private PersonalRepository personalRepository;
-    @Autowired
-    private UserRepository userRepository;
+    private final MarkRepository markRepository;
+    private final CorporateRepository corporateRepository;
+    private final PersonalRepository personalRepository;
+    private final UserRepository userRepository;
 
     @Override
     public List<MarkDto> marks() {

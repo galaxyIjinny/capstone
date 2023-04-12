@@ -4,7 +4,7 @@ import com.example.demo.admin.dto.AdminDto;
 import com.example.demo.admin.entity.Admin;
 import com.example.demo.admin.repository.AdminRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,11 +12,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AdminDetailsService implements UserDetailsService {
-    @Autowired
-    AdminRepository adminRepository;
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final AdminRepository adminRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
