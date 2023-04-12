@@ -15,9 +15,9 @@ function DomesticMark() {
       <MarkSelectForm />
       <TrademarkForm />
       <ClassificationForm />
-      <NationSelectForm />
-      <ApplicantForm />
       <ManagerForm />
+      <NationSelectForm />
+      <ApplicantForm /> 
     </div>
   );
 }
