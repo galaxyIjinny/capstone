@@ -7,24 +7,21 @@ import com.example.demo.service.info.InfoServiceImpl;
 import com.example.demo.service.mark.MarkServiceImpl;
 import com.example.demo.service.personal.PersonalServiceImpl;
 import com.example.demo.service.user.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/edit")
+@RequiredArgsConstructor
 @RestController
 public class EditController {
-    @Autowired
-    private InfoServiceImpl infoService;
-    @Autowired
-    private MarkServiceImpl markService;
-    /*@Autowired
-    private CorporateServiceImpl corporateService;
-    @Autowired
-    private PersonalServiceImpl personalService;
-    @Autowired
-    private UserServiceImpl userService;*/
+    private final InfoServiceImpl infoService;
+    private final MarkServiceImpl markService;
+    /*
+    private final CorporateServiceImpl corporateService;
+    private final PersonalServiceImpl personalService;
+    private final UserServiceImpl userService;*/
 
     @PatchMapping("/mark/{id}")
     public ResponseEntity<MarkDto> updateMark(@PathVariable Long id, @RequestBody MarkDto dto) {

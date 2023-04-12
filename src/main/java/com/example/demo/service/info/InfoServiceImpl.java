@@ -6,8 +6,8 @@ import com.example.demo.service.mark.MarkServiceImpl;
 import com.example.demo.service.personal.PersonalServiceImpl;
 import com.example.demo.service.user.UserServiceImpl;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,15 +15,12 @@ import java.util.List;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class InfoServiceImpl implements InfoService{
-    @Autowired
-    private MarkServiceImpl markService;
-    @Autowired
-    private PersonalServiceImpl personalService;
-    @Autowired
-    private CorporateServiceImpl corporateService;
-    @Autowired
-    private UserServiceImpl userService;
+    private final MarkServiceImpl markService;
+    private final PersonalServiceImpl personalService;
+    private final CorporateServiceImpl corporateService;
+    private final UserServiceImpl userService;
 
     @Override
     public List<InfoDto> info() {
